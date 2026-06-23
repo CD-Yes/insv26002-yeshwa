@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..600;1,6..72,200..500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box;}html,body{margin:0;padding:0;}body{background:#F7F0E6;}::selection{background:#D9824A;color:#F7F0E6;}</style>
+</helmet>
+
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F7F0E6;color:#2D4654;overflow-x:hidden;">
+  <dc-import name="YeshwaNav" active="gallery" hint-size="100%,72px"></dc-import>
+
+  <!-- HEADER -->
+  <section style="max-width:1320px;margin:0 auto;padding:80px 40px 44px;text-align:center;">
+    <p style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#D9824A;margin:0 0 16px;">Gallery & albums</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:300;font-size:56px;line-height:1.05;letter-spacing:-0.015em;margin:0 0 18px;color:#22353F;">A look inside the homes<br>we've furnished.</h1>
+    <p style="font-size:17px;line-height:1.65;color:#5E6E76;margin:0 auto;max-width:520px;">Browse finished projects by room. Every photo is a real Yeshwa install — no stock, no renders.</p>
+  </section>
+
+  <!-- ALBUM PILLS -->
+  <section style="max-width:1320px;margin:0 auto;padding:0 40px 36px;">
+    <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+      <span style="font-size:13.5px;font-weight:600;color:#F7F0E6;background:#2D4654;border-radius:999px;padding:9px 18px;">All albums</span>
+      <span style="font-size:13.5px;font-weight:600;color:#2D4654;border:1px solid rgba(45,70,84,0.2);border-radius:999px;padding:9px 18px;">Kitchens</span>
+      <span style="font-size:13.5px;font-weight:600;color:#2D4654;border:1px solid rgba(45,70,84,0.2);border-radius:999px;padding:9px 18px;">Wardrobes</span>
+      <span style="font-size:13.5px;font-weight:600;color:#2D4654;border:1px solid rgba(45,70,84,0.2);border-radius:999px;padding:9px 18px;">Living rooms</span>
+      <span style="font-size:13.5px;font-weight:600;color:#2D4654;border:1px solid rgba(45,70,84,0.2);border-radius:999px;padding:9px 18px;">Bedrooms</span>
+    </div>
+  </section>
+
+  <!-- MASONRY -->
+  <section style="max-width:1320px;margin:0 auto;padding:0 40px 80px;">
+    <div style="column-count:3;column-gap:22px;">
+      <div style="break-inside:avoid;margin-bottom:22px;position:relative;height:340px;border-radius:14px;overflow:hidden;background:repeating-linear-gradient(135deg,#E6DAC6 0 1px,#EFE5D5 1px 15px);"><div style="position:absolute;inset:0;display:flex;align-items:flex-end;padding:18px;background:linear-gradient(to top,rgba(34,53,63,0.5),transparent 50%);"><span style="font-family:ui-monospace,monospace;font-size:11px;color:rgba(255,255,255,0.85);">[ kitchen — London ]</span></div></div>
+      <div style="break-inside:avoid;margin-bottom:22px;position:relative;height:240px;border-radius:14px;overflow:hidden;background:repeating-linear-gradient(135deg,#E3D7C2 0 1px,#ECE2D1 1px 15px);"><div style="position:absolute;inset:0;display:flex;align-items:flex-end;padding:18px;background:linear-gradient(to top,rgba(34,53,63,0.5),transparent 50%);"><span style="font-family:ui-monospace,monospace;font-size:11px;color:rgba(255,255,255,0.85);">[ wardrobe — Dubai ]</span></div></div>
+      <div style="break-inside:avoid;margin-bottom:22px;position:relative;height:300px;border-radius:14px;overflow:hidden;background:repeating-linear-gradient(135deg,#E6DAC6 0 1px,#EFE5D5 1px 15px);"><div style="position:absolute;inset:0;display:flex;align-items:flex-end;padding:18px;background:linear-gradient(to top,rgba(34,53,63,0.5),transparent 50%);"><span style="font-family:ui-monospace,monospace;font-size:11px;color:rgba(255,255,255,0.85);">[ living room ]</span></div></div>
+      <div style="break-inside:avoid;margin-bottom:22px;position:relative;height:280px;border-radius:14px;overflow:hidden;background:repeating-linear-gradient(135deg,#E3D7C2 0 1px,#ECE2D1 1px 15px);"><div style="position:absolute;inset:0;display:flex;align-items:flex-end;padding:18px;background:linear-gradient(to top,rgba(34,53,63,0.5),transparent 50%);"><span style="font-family:ui-monospace,monospace;font-size:11px;color:rgba(255,255,255,0.85);">[ island kitchen ]</span></div></div>
+      <div style="break-inside:avoid;margin-bottom:22px;position:relative;height:360px;border-radius:14px;overflow:hidden;background:repeating-linear-gradient(135deg,#E6DAC6 0 1px,#EFE5D5 1px 15px);"><div style="position:absolute;inset:0;display:flex;align-items:flex-end;padding:18px;background:linear-gradient(to top,rgba(34,53,63,0.5),transparent 50%);"><span style="font-family:ui-monospace,monospace;font-size:11px;color:rgba(255,255,255,0.85);">[ walk-in wardrobe ]</span></div></div>
+      <div style="break-inside:avoid;margin-bottom:22px;position:relative;height:230px;border-radius:14px;overflow:hidden;background:repeating-linear-gradient(135deg,#E3D7C2 0 1px,#ECE2D1 1px 15px);"><div style="position:absolute;inset:0;display:flex;align-items:flex-end;padding:18px;background:linear-gradient(to top,rgba(34,53,63,0.5),transparent 50%);"><span style="font-family:ui-monospace,monospace;font-size:11px;color:rgba(255,255,255,0.85);">[ media wall ]</span></div></div>
+      <div style="break-inside:avoid;margin-bottom:22px;position:relative;height:300px;border-radius:14px;overflow:hidden;background:repeating-linear-gradient(135deg,#E6DAC6 0 1px,#EFE5D5 1px 15px);"><div style="position:absolute;inset:0;display:flex;align-items:flex-end;padding:18px;background:linear-gradient(to top,rgba(34,53,63,0.5),transparent 50%);"><span style="font-family:ui-monospace,monospace;font-size:11px;color:rgba(255,255,255,0.85);">[ bedroom storage ]</span></div></div>
+      <div style="break-inside:avoid;margin-bottom:22px;position:relative;height:260px;border-radius:14px;overflow:hidden;background:repeating-linear-gradient(135deg,#E3D7C2 0 1px,#ECE2D1 1px 15px);"><div style="position:absolute;inset:0;display:flex;align-items:flex-end;padding:18px;background:linear-gradient(to top,rgba(34,53,63,0.5),transparent 50%);"><span style="font-family:ui-monospace,monospace;font-size:11px;color:rgba(255,255,255,0.85);">[ study nook ]</span></div></div>
+      <div style="break-inside:avoid;margin-bottom:22px;position:relative;height:330px;border-radius:14px;overflow:hidden;background:repeating-linear-gradient(135deg,#E6DAC6 0 1px,#EFE5D5 1px 15px);"><div style="position:absolute;inset:0;display:flex;align-items:flex-end;padding:18px;background:linear-gradient(to top,rgba(34,53,63,0.5),transparent 50%);"><span style="font-family:ui-monospace,monospace;font-size:11px;color:rgba(255,255,255,0.85);">[ full-home — Sydney ]</span></div></div>
+    </div>
+    <p style="text-align:center;font-family:ui-monospace,monospace;font-size:12px;color:rgba(45,70,84,0.5);margin-top:8px;">Drop real project photos into these slots — sizes are flexible.</p>
+  </section>
+
+  <!-- CTA -->
+  <section style="max-width:1320px;margin:0 auto 96px;padding:0 40px;">
+    <div style="border-radius:18px;background:#2D4654;padding:64px 56px;text-align:center;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:300;font-size:40px;line-height:1.1;margin:0 0 14px;color:#F7F0E6;">Want your home in this gallery?</h2>
+      <a href="Yeshwa-Contact.dc.html" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:#D9824A;color:#F7F0E6;font-size:16px;font-weight:600;padding:16px 34px;border-radius:999px;margin-top:16px;transition:background .2s;" style-hover="background:#C26E38;">Start your project →</a>
+    </div>
+  </section>
+
+  <dc-import name="YeshwaFooter" hint-size="100%,420px"></dc-import>
+</div>
+
+</x-dc>
+</body>
+</html>

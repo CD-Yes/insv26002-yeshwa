@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..600;1,6..72,200..500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box;}html,body{margin:0;padding:0;}body{background:#F7F0E6;}::selection{background:#D9824A;color:#F7F0E6;}input,select,textarea{font-family:'Hanken Grotesk',sans-serif;}input::placeholder,textarea::placeholder{color:#9aa6ac;}</style>
+</helmet>
+
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F7F0E6;color:#2D4654;overflow-x:hidden;">
+  <dc-import name="YeshwaNav" active="contact" hint-size="100%,72px"></dc-import>
+
+  <section style="max-width:1320px;margin:0 auto;padding:80px 40px 40px;">
+    <div style="display:grid;grid-template-columns:0.85fr 1.15fr;gap:64px;align-items:start;">
+      <!-- LEFT -->
+      <div>
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#D9824A;margin:0 0 16px;">Get a quote</p>
+        <h1 style="font-family:'Newsreader',serif;font-weight:300;font-size:50px;line-height:1.06;letter-spacing:-0.015em;margin:0 0 22px;color:#22353F;">Let's design your<br>space together.</h1>
+        <p style="font-size:16.5px;line-height:1.7;color:#5E6E76;margin:0 0 40px;max-width:400px;">Tell us a little about your project. Our design team will get back within one business day to book a free consultation.</p>
+
+        <div style="display:flex;flex-direction:column;gap:22px;">
+          <div style="display:flex;gap:16px;align-items:flex-start;">
+            <span style="flex:none;display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:12px;background:#EFE6D8;color:#D9824A;font-size:18px;">☎</span>
+            <div><div style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#9a8b76;margin-bottom:4px;">Call us</div><a href="tel:+10000000000" style="text-decoration:none;font-size:16px;font-weight:600;color:#22353F;">+1 000 000 0000</a></div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start;">
+            <span style="flex:none;display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:12px;background:#EFE6D8;color:#D9824A;font-size:18px;">✉</span>
+            <div><div style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#9a8b76;margin-bottom:4px;">Email</div><a href="mailto:hello@yeshwa.studio" style="text-decoration:none;font-size:16px;font-weight:600;color:#22353F;">hello@yeshwa.studio</a></div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start;">
+            <span style="flex:none;display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:12px;background:#EFE6D8;color:#D9824A;font-size:18px;">⌖</span>
+            <div><div style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#9a8b76;margin-bottom:4px;">Studios</div><div style="font-size:16px;font-weight:600;color:#22353F;line-height:1.5;">London · Dubai · Singapore<br>Mumbai · New York · Sydney</div></div>
+          </div>
+        </div>
+
+        <div style="margin-top:36px;border-radius:14px;overflow:hidden;border:1px solid rgba(45,70,84,0.12);height:240px;background:#e8e0d2;">
+          <iframe title="Yeshwa studio location" src="https://www.google.com/maps?q=design+studio&output=embed" style="width:100%;height:100%;border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <!-- RIGHT: FORM -->
+      <div style="background:#fff;border:1px solid rgba(45,70,84,0.1);border-radius:18px;padding:40px;box-shadow:0 24px 60px -30px rgba(34,53,63,0.25);">
+        <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 20px;min-height:480px;">
+            <span style="display:flex;align-items:center;justify-content:center;width:72px;height:72px;border-radius:50%;background:#EFE6D8;color:#D9824A;font-size:34px;font-family:'Newsreader',serif;margin-bottom:24px;">✓</span>
+            <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:30px;margin:0 0 12px;color:#22353F;">Thank you — we've got it.</h2>
+            <p style="font-size:16px;line-height:1.65;color:#5E6E76;margin:0;max-width:340px;">Our design team will reach out within one business day to schedule your free consultation.</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+        <div>
+          <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:26px;margin:0 0 26px;color:#22353F;">Request your free quote</h2>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;">
+            <label style="display:block;"><span style="display:block;font-size:13px;font-weight:600;color:#2D4654;margin-bottom:8px;">Full name</span><input type="text" placeholder="Your name" style="width:100%;font-size:15px;padding:13px 15px;border-radius:10px;border:1px solid rgba(45,70,84,0.18);background:#FBF7EF;color:#2D4654;outline:none;" /></label>
+            <label style="display:block;"><span style="display:block;font-size:13px;font-weight:600;color:#2D4654;margin-bottom:8px;">Phone</span><input type="tel" placeholder="Include country code" style="width:100%;font-size:15px;padding:13px 15px;border-radius:10px;border:1px solid rgba(45,70,84,0.18);background:#FBF7EF;color:#2D4654;outline:none;" /></label>
+          </div>
+          <label style="display:block;margin-bottom:18px;"><span style="display:block;font-size:13px;font-weight:600;color:#2D4654;margin-bottom:8px;">Email</span><input type="email" placeholder="you@email.com" style="width:100%;font-size:15px;padding:13px 15px;border-radius:10px;border:1px solid rgba(45,70,84,0.18);background:#FBF7EF;color:#2D4654;outline:none;" /></label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;">
+            <label style="display:block;"><span style="display:block;font-size:13px;font-weight:600;color:#2D4654;margin-bottom:8px;">Project type</span><select style="width:100%;font-size:15px;padding:13px 15px;border-radius:10px;border:1px solid rgba(45,70,84,0.18);background:#FBF7EF;color:#2D4654;outline:none;"><option>Modular kitchen</option><option>Wardrobes</option><option>TV & storage</option><option>Home office</option><option>Full-home interiors</option></select></label>
+            <label style="display:block;"><span style="display:block;font-size:13px;font-weight:600;color:#2D4654;margin-bottom:8px;">Approx. budget</span><select style="width:100%;font-size:15px;padding:13px 15px;border-radius:10px;border:1px solid rgba(45,70,84,0.18);background:#FBF7EF;color:#2D4654;outline:none;"><option>Under $5k</option><option>$5k–10k</option><option>$10k–25k</option><option>$25k +</option></select></label>
+          </div>
+          <label style="display:block;margin-bottom:24px;"><span style="display:block;font-size:13px;font-weight:600;color:#2D4654;margin-bottom:8px;">Tell us about your space</span><textarea rows="4" placeholder="Apartment / house, city, what you're looking for…" style="width:100%;font-size:15px;padding:13px 15px;border-radius:10px;border:1px solid rgba(45,70,84,0.18);background:#FBF7EF;color:#2D4654;outline:none;resize:vertical;"></textarea></label>
+          <button onClick="{{ submit }}" style="width:100%;cursor:pointer;border:none;background:#D9824A;color:#F7F0E6;font-size:16px;font-weight:600;padding:16px;border-radius:999px;transition:background .2s;" style-hover="background:#C26E38;">Send my request →</button>
+          <p style="text-align:center;font-size:12.5px;color:#9aa6ac;margin:16px 0 0;">We'll never share your details. Free consultation, no obligation.</p>
+        </div>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <div style="height:80px;"></div>
+  <dc-import name="YeshwaFooter" hint-size="100%,420px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { submitted: false };
+  renderVals() {
+    return {
+      submitted: this.state.submitted,
+      notSubmitted: !this.state.submitted,
+      submit: () => this.setState({ submitted: true }),
+    };
+  }
+}
+</script>
+</body>
+</html>

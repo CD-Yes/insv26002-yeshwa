@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..600;1,6..72,200..500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</helmet>
+<header style="position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 40px;background:rgba(247,240,230,0.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(45,70,84,0.12);font-family:'Hanken Grotesk',sans-serif;">
+  <a href="Yeshwa-Home.dc.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;flex:none;">
+    <span style="display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:#D9824A;color:#F7F0E6;font-family:'Newsreader',serif;font-weight:500;font-size:26px;line-height:1;padding-bottom:3px;">Y</span>
+    <span style="display:flex;flex-direction:column;line-height:1;">
+      <span style="font-size:19px;font-weight:700;letter-spacing:0.16em;color:#2D4654;">YESHWA</span>
+      <span style="font-size:8.5px;font-weight:600;letter-spacing:0.34em;color:#8a7a66;margin-top:4px;">MODULAR FURNITURE</span>
+    </span>
+  </a>
+
+  <nav style="display:flex;align-items:center;gap:34px;">
+    <a href="Yeshwa-Home.dc.html" style="position:relative;text-decoration:none;font-size:14.5px;font-weight:500;color:#2D4654;padding:6px 0;" style-hover="color:#D9824A;">Home<sc-if value="{{ isHome }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:0;right:0;bottom:-2px;height:2px;background:#D9824A;border-radius:2px;"></span></sc-if></a>
+    <a href="Yeshwa-About.dc.html" style="position:relative;text-decoration:none;font-size:14.5px;font-weight:500;color:#2D4654;padding:6px 0;" style-hover="color:#D9824A;">About<sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:0;right:0;bottom:-2px;height:2px;background:#D9824A;border-radius:2px;"></span></sc-if></a>
+    <a href="Yeshwa-Products.dc.html" style="position:relative;text-decoration:none;font-size:14.5px;font-weight:500;color:#2D4654;padding:6px 0;" style-hover="color:#D9824A;">Products<sc-if value="{{ isProducts }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:0;right:0;bottom:-2px;height:2px;background:#D9824A;border-radius:2px;"></span></sc-if></a>
+    <a href="Yeshwa-Gallery.dc.html" style="position:relative;text-decoration:none;font-size:14.5px;font-weight:500;color:#2D4654;padding:6px 0;" style-hover="color:#D9824A;">Gallery<sc-if value="{{ isGallery }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:0;right:0;bottom:-2px;height:2px;background:#D9824A;border-radius:2px;"></span></sc-if></a>
+    <a href="Yeshwa-Blog.dc.html" style="position:relative;text-decoration:none;font-size:14.5px;font-weight:500;color:#2D4654;padding:6px 0;" style-hover="color:#D9824A;">Blog<sc-if value="{{ isBlog }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:0;right:0;bottom:-2px;height:2px;background:#D9824A;border-radius:2px;"></span></sc-if></a>
+  </nav>
+
+  <a href="Yeshwa-Contact.dc.html" style="flex:none;display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:#2D4654;color:#F7F0E6;font-size:14px;font-weight:600;padding:11px 22px;border-radius:999px;transition:background .2s;" style-hover="background:#D9824A;">Get a quote →</a>
+</header>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;about&quot;,&quot;products&quot;,&quot;gallery&quot;,&quot;blog&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const a = this.props.active || '';
+    return {
+      isHome: a === 'home',
+      isAbout: a === 'about',
+      isProducts: a === 'products',
+      isGallery: a === 'gallery',
+      isBlog: a === 'blog',
+    };
+  }
+}
+</script>
+</body>
+</html>

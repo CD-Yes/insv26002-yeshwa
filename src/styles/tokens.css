@@ -1,0 +1,43 @@
+/* ---------------------------------------------------------------------------
+ * Brand design tokens — extracted verbatim from the original Yeshwa export.
+ * These are the single source of truth for colour + type and must not drift.
+ * ------------------------------------------------------------------------- */
+:root {
+  /* Surfaces */
+  --y-cream: #f7f0e6;
+  --y-cream-admin: #f1eadc;
+  --y-cream-panel: #efe6d8;
+  --y-card: #ffffff;
+
+  /* Brand */
+  --y-accent: #d9824a;
+  --y-accent-hover: #c26e38;
+  --y-accent-light: #e5915a;
+
+  /* Ink / navy */
+  --y-navy: #21353f;
+  --y-ink: #16242b;
+  --y-slate: #2d4654;
+  --y-muted: #5e6e76;
+  --y-warm: #8a7a66;
+  --y-warm-2: #9a8b76;
+
+  /* On-dark text */
+  --y-on-dark: #f7f0e6;
+  --y-on-dark-muted: #9db0b8;
+
+  /* Type */
+  --y-serif: 'Newsreader', ui-serif, Georgia, serif;
+  --y-sans: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --y-mono: ui-monospace, SFMono-Regular, monospace;
+
+  /* Status colours (admin) */
+  --y-status-green: #2c8a53;
+  --y-status-green-bg: rgba(63, 166, 106, 0.14);
+  --y-status-blue: #2d6cd6;
+  --y-status-blue-bg: rgba(66, 133, 244, 0.14);
+  --y-status-purple: #7c57b0;
+  --y-status-purple-bg: rgba(155, 120, 200, 0.16);
+  --y-status-amber: #c26e38;
+  --y-status-amber-bg: rgba(229, 145, 90, 0.16);
+}

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..600;1,6..72,200..500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:#F7F0E6;}
+  ::selection{background:#D9824A;color:#F7F0E6;}
+  @keyframes yreveal{from{opacity:0;transform:translateY(32px);}to{opacity:1;transform:none;}}
+  @supports (animation-timeline:view()){
+    [data-reveal]{opacity:0;animation:yreveal linear both;animation-timeline:view();animation-range:entry 0% entry 65%;}
+  }
+  .hero-in{opacity:0;animation:yreveal .95s cubic-bezier(.22,.7,.2,1) forwards;}
+  .yzoom{overflow:hidden;}
+  .yzoom>.yzoom-img{transition:transform 1.1s cubic-bezier(.19,1,.22,1);}
+  .yzoom:hover>.yzoom-img{transform:scale(1.06);}
+  @keyframes ymarquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  .ymarquee-track{display:flex;width:max-content;animation:ymarquee 32s linear infinite;}
+  @media (prefers-reduced-motion:reduce){[data-reveal],.hero-in{opacity:1!important;transform:none!important;animation:none!important;}.ymarquee-track{animation:none;}}
+</style>
+<noscript><style>[data-reveal]{opacity:1!important;transform:none!important;}</style></noscript>
+</helmet>
+
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F7F0E6;color:#22353F;overflow-x:hidden;">
+  <dc-import name="YeshwaNav" active="home" hint-size="100%,72px"></dc-import>
+
+  <!-- HERO -->
+  <section style="position:relative;max-width:1340px;margin:0 auto;padding:54px 48px 30px;min-height:88vh;display:flex;flex-direction:column;justify-content:center;">
+    <div class="hero-in" style="display:flex;align-items:center;justify-content:space-between;padding-bottom:40px;animation-delay:.05s;">
+      <span style="font-size:12px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#8a7a66;">Modular furniture studio</span>
+      <span style="font-size:12px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#8a7a66;">Est. 2014</span>
+    </div>
+    <h1 style="font-family:'Newsreader',serif;font-weight:300;font-size:clamp(48px,8vw,116px);line-height:0.98;letter-spacing:-0.02em;margin:0;color:#16242B;max-width:1100px;">
+      <span class="hero-in" data-delay="60" style="display:block;animation-delay:.12s;">Furniture made</span>
+      <span class="hero-in" data-delay="160" style="display:block;animation-delay:.22s;">to fit the way</span>
+      <span class="hero-in" data-delay="260" style="display:block;animation-delay:.32s;">you <span style="font-style:italic;color:#D9824A;">actually</span> live.</span>
+    </h1>
+    <div class="hero-in" style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-top:44px;animation-delay:.44s;">
+      <p style="font-size:19px;line-height:1.6;color:#5E6E76;margin:0;max-width:430px;">Kitchens, wardrobes and whole-home interiors — designed around your space and built in our own facility. Considered furniture, delivered with precision.</p>
+      <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+        <a href="Yeshwa-Contact.dc.html" data-magnetic style="display:inline-flex;align-items:center;gap:9px;text-decoration:none;background:#D9824A;color:#F7F0E6;font-size:16px;font-weight:600;padding:17px 32px;border-radius:999px;transition:transform .25s ease,background .25s ease;" style-hover="background:#C26E38;">Book a consultation →</a>
+        <a href="Yeshwa-Products.dc.html" style="display:inline-flex;align-items:center;gap:9px;text-decoration:none;color:#22353F;font-size:16px;font-weight:600;padding:17px 4px;border-bottom:2px solid transparent;transition:border-color .25s;" style-hover="border-bottom-color:#22353F;">View our work</a>
+      </div>
+    </div>
+    <div class="hero-in" style="position:absolute;left:48px;bottom:18px;display:flex;align-items:center;gap:12px;color:#9a8b76;animation-delay:.56s;">
+      <span style="display:block;width:30px;height:1px;background:#9a8b76;"></span><span style="font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;">Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- CINEMATIC FULL-BLEED -->
+  <section style="padding:0 24px;">
+    <div class="yzoom" data-reveal style="position:relative;height:64vh;min-height:440px;border-radius:18px;overflow:hidden;background:#222;">
+      <div class="yzoom-img" data-parallax style="position:absolute;inset:-8%;background:repeating-linear-gradient(135deg,#D9CBB4 0 1px,#E4D8C2 1px 16px);"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(22,36,43,0.55),rgba(22,36,43,0.05) 55%);"></div>
+      <div style="position:absolute;left:40px;bottom:34px;right:40px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;">
+        <div>
+          <span style="font-size:11.5px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.7);">Featured project</span>
+          <h2 style="font-family:'Newsreader',serif;font-weight:300;font-size:clamp(28px,4vw,48px);line-height:1.05;color:#fff;margin:10px 0 0;">The Lakeside Residence — full kitchen & living</h2>
+        </div>
+        <span style="font-family:ui-monospace,monospace;font-size:11px;color:rgba(255,255,255,0.6);flex:none;">[ cinematic hero image ]</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CITIES MARQUEE -->
+  <section style="margin:46px 0;border-top:1px solid rgba(45,70,84,0.12);border-bottom:1px solid rgba(45,70,84,0.12);overflow:hidden;">
+    <div style="display:flex;align-items:center;">
+      <span style="flex:none;padding:0 28px;font-size:11.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#9a8b76;border-right:1px solid rgba(45,70,84,0.12);align-self:stretch;display:flex;align-items:center;">Delivering homes in</span>
+      <div style="overflow:hidden;flex:1;padding:20px 0;">
+        <div class="ymarquee-track">
+          <span style="display:flex;gap:0;font-family:'Newsreader',serif;font-size:26px;color:#5E6E76;">
+            <span style="padding:0 30px;">London</span><span style="color:#D9824A;">✦</span><span style="padding:0 30px;">Dubai</span><span style="color:#D9824A;">✦</span><span style="padding:0 30px;">Singapore</span><span style="color:#D9824A;">✦</span><span style="padding:0 30px;">Mumbai</span><span style="color:#D9824A;">✦</span><span style="padding:0 30px;">New York</span><span style="color:#D9824A;">✦</span><span style="padding:0 30px;">Sydney</span><span style="color:#D9824A;">✦</span><span style="padding:0 30px;">Toronto</span><span style="color:#D9824A;">✦</span>
+          </span>
+          <span style="display:flex;gap:0;font-family:'Newsreader',serif;font-size:26px;color:#5E6E76;" aria-hidden="true">
+            <span style="padding:0 30px;">London</span><span style="color:#D9824A;">✦</span><span style="padding:0 30px;">Dubai</span><span style="color:#D9824A;">✦</span><span style="padding:0 30px;">Singapore</span><span style="color:#D9824A;">✦</span><span style="padding:0 30px;">Mumbai</span><span style="color:#D9824A;">✦</span><span style="padding:0 30px;">New York</span><span style="color:#D9824A;">✦</span><span style="padding:0 30px;">Sydney</span><span style="color:#D9824A;">✦</span><span style="padding:0 30px;">Toronto</span><span style="color:#D9824A;">✦</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS / COUNTERS -->
+  <section style="max-width:1340px;margin:0 auto;padding:50px 48px 80px;">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:32px;">
+      <div data-reveal><div style="font-family:'Newsreader',serif;font-size:clamp(40px,5vw,62px);line-height:1;color:#16242B;">12<span style="color:#D9824A;">+</span></div><div style="font-size:14px;color:#5E6E76;margin-top:10px;">years crafting interiors</div></div>
+      <div data-reveal><div style="font-family:'Newsreader',serif;font-size:clamp(40px,5vw,62px);line-height:1;color:#16242B;">5,000<span style="color:#D9824A;">+</span></div><div style="font-size:14px;color:#5E6E76;margin-top:10px;">spaces delivered</div></div>
+      <div data-reveal><div style="font-family:'Newsreader',serif;font-size:clamp(40px,5vw,62px);line-height:1;color:#16242B;">30<span style="color:#D9824A;">+</span></div><div style="font-size:14px;color:#5E6E76;margin-top:10px;">cities served</div></div>
+      <div data-reveal><div style="font-family:'Newsreader',serif;font-size:clamp(40px,5vw,62px);line-height:1;color:#16242B;">4.9<span style="color:#D9824A;">★</span></div><div style="font-size:14px;color:#5E6E76;margin-top:10px;">average client rating</div></div>
+    </div>
+  </section>
+
+  <!-- MANIFESTO (DARK) -->
+  <section style="background:#16242B;color:#F7F0E6;">
+    <div style="max-width:1180px;margin:0 auto;padding:120px 48px;text-align:center;">
+      <p data-reveal style="font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#D9824A;margin:0 0 30px;">Our promise</p>
+      <h2 data-reveal data-delay="80" style="font-family:'Newsreader',serif;font-weight:300;font-size:clamp(30px,4.6vw,58px);line-height:1.18;letter-spacing:-0.01em;margin:0;color:#F7F0E6;">We don't resell flat-pack furniture. Every panel is designed, cut and finished by our own makers — so the quality, the price and the timeline are all <span style="font-style:italic;color:#E5915A;">ours to guarantee.</span></h2>
+      <div data-reveal data-delay="160" style="display:flex;gap:48px;justify-content:center;flex-wrap:wrap;margin-top:54px;">
+        <div style="text-align:left;"><div style="font-weight:700;font-size:15px;color:#fff;">In-house manufacturing</div><div style="font-size:13.5px;color:#9DB0B8;margin-top:3px;">Full control, end to end</div></div>
+        <div style="width:1px;background:rgba(255,255,255,0.16);"></div>
+        <div style="text-align:left;"><div style="font-weight:700;font-size:15px;color:#fff;">Transparent pricing</div><div style="font-size:13.5px;color:#9DB0B8;margin-top:3px;">Itemised, no surprises</div></div>
+        <div style="width:1px;background:rgba(255,255,255,0.16);"></div>
+        <div style="text-align:left;"><div style="font-weight:700;font-size:15px;color:#fff;">5-year warranty</div><div style="font-size:13.5px;color:#9DB0B8;margin-top:3px;">On every installation</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section style="max-width:1340px;margin:0 auto;padding:110px 48px 50px;">
+    <div data-reveal style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:48px;">
+      <div>
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#D9824A;margin:0 0 16px;">What we make</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:300;font-size:clamp(34px,4.4vw,54px);line-height:1.04;letter-spacing:-0.01em;margin:0;color:#16242B;">Modular, down to<br>the last millimetre.</h2>
+      </div>
+      <a href="Yeshwa-Products.dc.html" style="flex:none;text-decoration:none;font-size:15px;font-weight:600;color:#22353F;border-bottom:2px solid #D9824A;padding-bottom:3px;" style-hover="color:#D9824A;">View all products →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+      <a href="Yeshwa-Products.dc.html" data-reveal class="yzoom" style="text-decoration:none;color:inherit;grid-row:span 2;display:flex;flex-direction:column;border-radius:16px;overflow:hidden;background:#fff;border:1px solid rgba(45,70,84,0.08);transition:box-shadow .35s,transform .35s;" style-hover="transform:translateY(-5px);box-shadow:0 30px 60px -30px rgba(22,36,43,0.32);">
+        <div style="position:relative;height:380px;overflow:hidden;"><div class="yzoom-img" style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,#E0D3BD 0 1px,#EAE0CF 1px 16px);"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;"><span style="font-family:ui-monospace,monospace;font-size:11px;color:rgba(45,70,84,0.42);">[ modular kitchen ]</span></div></div>
+        <div style="padding:26px;"><h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:27px;margin:0 0 9px;color:#16242B;">Modular kitchens</h3><p style="font-size:14.5px;line-height:1.6;color:#5E6E76;margin:0;">Soft-close hardware, moisture-proof carcasses and finishes built to last a lifetime of cooking.</p></div>
+      </a>
+      <a href="Yeshwa-Products.dc.html" data-reveal data-delay="80" class="yzoom" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;border-radius:16px;overflow:hidden;background:#fff;border:1px solid rgba(45,70,84,0.08);transition:box-shadow .35s,transform .35s;" style-hover="transform:translateY(-5px);box-shadow:0 30px 60px -30px rgba(22,36,43,0.32);">
+        <div style="position:relative;height:158px;overflow:hidden;"><div class="yzoom-img" style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,#E3D7C2 0 1px,#ECE2D1 1px 16px);"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;"><span style="font-family:ui-monospace,monospace;font-size:11px;color:rgba(45,70,84,0.42);">[ wardrobe ]</span></div></div>
+        <div style="padding:22px 24px;"><h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:23px;margin:0 0 6px;color:#16242B;">Wardrobes & closets</h3><p style="font-size:13.5px;line-height:1.55;color:#5E6E76;margin:0;">Sliding or hinged, floor to ceiling, fully organised inside.</p></div>
+      </a>
+      <a href="Yeshwa-Products.dc.html" data-reveal data-delay="160" class="yzoom" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;border-radius:16px;overflow:hidden;background:#fff;border:1px solid rgba(45,70,84,0.08);transition:box-shadow .35s,transform .35s;" style-hover="transform:translateY(-5px);box-shadow:0 30px 60px -30px rgba(22,36,43,0.32);">
+        <div style="position:relative;height:158px;overflow:hidden;"><div class="yzoom-img" style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,#E3D7C2 0 1px,#ECE2D1 1px 16px);"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;"><span style="font-family:ui-monospace,monospace;font-size:11px;color:rgba(45,70,84,0.42);">[ media wall ]</span></div></div>
+        <div style="padding:22px 24px;"><h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:23px;margin:0 0 6px;color:#16242B;">TV & storage walls</h3><p style="font-size:13.5px;line-height:1.55;color:#5E6E76;margin:0;">Statement media walls with hidden cable management.</p></div>
+      </a>
+      <a href="Yeshwa-Products.dc.html" data-reveal class="yzoom" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;border-radius:16px;overflow:hidden;background:#fff;border:1px solid rgba(45,70,84,0.08);transition:box-shadow .35s,transform .35s;" style-hover="transform:translateY(-5px);box-shadow:0 30px 60px -30px rgba(22,36,43,0.32);">
+        <div style="position:relative;height:158px;overflow:hidden;"><div class="yzoom-img" style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,#E3D7C2 0 1px,#ECE2D1 1px 16px);"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;"><span style="font-family:ui-monospace,monospace;font-size:11px;color:rgba(45,70,84,0.42);">[ home office ]</span></div></div>
+        <div style="padding:22px 24px;"><h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:23px;margin:0 0 6px;color:#16242B;">Home offices</h3><p style="font-size:13.5px;line-height:1.55;color:#5E6E76;margin:0;">Desks and shelving built for focus, calls and calm.</p></div>
+      </a>
+      <a href="Yeshwa-Products.dc.html" data-reveal data-delay="80" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;border-radius:16px;overflow:hidden;background:#2D4654;border:1px solid rgba(45,70,84,0.08);transition:box-shadow .35s,transform .35s;" style-hover="transform:translateY(-5px);box-shadow:0 30px 60px -30px rgba(22,36,43,0.32);">
+        <div style="padding:26px 24px;display:flex;flex-direction:column;height:100%;justify-content:space-between;min-height:158px;"><h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:23px;margin:0 0 6px;color:#F7F0E6;">Full-home interiors</h3><p style="font-size:13.5px;line-height:1.55;color:#B9C4CA;margin:0 0 16px;">One studio for your entire home — kitchen to bedroom.</p><span style="font-size:13.5px;font-weight:600;color:#E5915A;">Plan my home →</span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- EDITORIAL PROJECTS (ALTERNATING) -->
+  <section style="max-width:1340px;margin:0 auto;padding:90px 48px;">
+    <div data-reveal style="margin-bottom:60px;"><p style="font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#D9824A;margin:0 0 16px;">Selected work</p><h2 style="font-family:'Newsreader',serif;font-weight:300;font-size:clamp(34px,4.4vw,54px);line-height:1.04;margin:0;color:#16242B;">Recent projects</h2></div>
+
+    <div data-reveal style="display:grid;grid-template-columns:1.2fr 0.8fr;gap:54px;align-items:center;margin-bottom:80px;">
+      <div class="yzoom" style="position:relative;height:520px;border-radius:16px;overflow:hidden;"><div class="yzoom-img" data-parallax style="position:absolute;inset:-6%;background:repeating-linear-gradient(135deg,#E0D3BD 0 1px,#EAE0CF 1px 16px);"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;"><span style="font-family:ui-monospace,monospace;font-size:12px;color:rgba(45,70,84,0.42);">[ The Lakeside Residence — kitchen ]</span></div></div>
+      <div>
+        <span style="font-size:12px;font-weight:600;color:#D9824A;border:1px solid #D9824A;border-radius:999px;padding:6px 14px;">Modular kitchen</span>
+        <h3 style="font-family:'Newsreader',serif;font-weight:300;font-size:38px;line-height:1.08;margin:22px 0 14px;color:#16242B;">The Lakeside Residence</h3>
+        <p style="font-size:16px;line-height:1.7;color:#5E6E76;margin:0 0 26px;max-width:420px;">A handle-less island kitchen in warm oak and matte stone, designed for a family that cooks together every evening.</p>
+        <a href="Yeshwa-Products.dc.html" style="text-decoration:none;font-size:15px;font-weight:600;color:#22353F;border-bottom:2px solid #D9824A;padding-bottom:3px;" style-hover="color:#D9824A;">View project →</a>
+      </div>
+    </div>
+
+    <div data-reveal style="display:grid;grid-template-columns:0.8fr 1.2fr;gap:54px;align-items:center;">
+      <div style="order:2;" class="yzoom"><div style="position:relative;height:520px;border-radius:16px;overflow:hidden;"><div class="yzoom-img" data-parallax style="position:absolute;inset:-6%;background:repeating-linear-gradient(135deg,#E3D7C2 0 1px,#ECE2D1 1px 16px);"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;"><span style="font-family:ui-monospace,monospace;font-size:12px;color:rgba(45,70,84,0.42);">[ The Hillside Apartment — walk-in ]</span></div></div></div>
+      <div style="order:1;">
+        <span style="font-size:12px;font-weight:600;color:#D9824A;border:1px solid #D9824A;border-radius:999px;padding:6px 14px;">Walk-in wardrobe</span>
+        <h3 style="font-family:'Newsreader',serif;font-weight:300;font-size:38px;line-height:1.08;margin:22px 0 14px;color:#16242B;">The Hillside Apartment</h3>
+        <p style="font-size:16px;line-height:1.7;color:#5E6E76;margin:0 0 26px;max-width:420px;">A full dressing room with glass-front cabinets, integrated lighting and a central island — calm, ordered, every morning.</p>
+        <a href="Yeshwa-Products.dc.html" style="text-decoration:none;font-size:15px;font-weight:600;color:#22353F;border-bottom:2px solid #D9824A;padding-bottom:3px;" style-hover="color:#D9824A;">View project →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section style="background:#EFE6D8;border-top:1px solid rgba(45,70,84,0.08);border-bottom:1px solid rgba(45,70,84,0.08);">
+    <div style="max-width:1340px;margin:0 auto;padding:100px 48px;">
+      <div data-reveal style="text-align:center;margin-bottom:64px;"><p style="font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#D9824A;margin:0 0 16px;">How it works</p><h2 style="font-family:'Newsreader',serif;font-weight:300;font-size:clamp(34px,4.4vw,54px);line-height:1.04;margin:0;color:#16242B;">Four steps to a finished home</h2></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:30px;">
+        <div data-reveal><div style="font-family:'Newsreader',serif;font-size:58px;color:#D9824A;line-height:1;margin-bottom:20px;">01</div><h3 style="font-size:18px;font-weight:700;margin:0 0 10px;color:#16242B;">Consult & measure</h3><p style="font-size:14.5px;line-height:1.6;color:#5E6E76;margin:0;">A free consultation to understand your space, needs and budget.</p></div>
+        <div data-reveal data-delay="80"><div style="font-family:'Newsreader',serif;font-size:58px;color:#D9824A;line-height:1;margin-bottom:20px;">02</div><h3 style="font-size:18px;font-weight:700;margin:0 0 10px;color:#16242B;">Design in 3D</h3><p style="font-size:14.5px;line-height:1.6;color:#5E6E76;margin:0;">See your space in realistic 3D before a single panel is cut.</p></div>
+        <div data-reveal data-delay="160"><div style="font-family:'Newsreader',serif;font-size:58px;color:#D9824A;line-height:1;margin-bottom:20px;">03</div><h3 style="font-size:18px;font-weight:700;margin:0 0 10px;color:#16242B;">Manufacture</h3><p style="font-size:14.5px;line-height:1.6;color:#5E6E76;margin:0;">Precision-built in our own facility with checks at every stage.</p></div>
+        <div data-reveal data-delay="240"><div style="font-family:'Newsreader',serif;font-size:58px;color:#D9824A;line-height:1;margin-bottom:20px;">04</div><h3 style="font-size:18px;font-weight:700;margin:0 0 10px;color:#16242B;">Install & handover</h3><p style="font-size:14.5px;line-height:1.6;color:#5E6E76;margin:0;">Clean, on-time installation — then a 5-year warranty.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS + MAP -->
+  <section style="background:#16242B;color:#F7F0E6;">
+    <div style="max-width:1340px;margin:0 auto;padding:100px 48px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;">
+        <div data-reveal>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:28px;flex-wrap:wrap;">
+            <span style="font-family:'Newsreader',serif;font-size:48px;line-height:1;color:#fff;">4.9</span>
+            <div><div style="font-size:18px;letter-spacing:0.08em;color:#F4B23E;">★★★★★</div><div style="font-size:13px;color:#9DB0B8;margin-top:4px;">From 1,200+ verified reviews</div></div>
+            <span style="margin-left:6px;display:inline-flex;align-items:center;gap:7px;background:rgba(247,240,230,0.1);border:1px solid rgba(247,240,230,0.18);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:600;"><span style="font-weight:700;"><span style="color:#4285F4;">G</span><span style="color:#EA4335;">o</span><span style="color:#FBBC05;">o</span><span style="color:#4285F4;">g</span><span style="color:#34A853;">l</span><span style="color:#EA4335;">e</span></span> Reviews</span>
+          </div>
+          <h2 style="font-family:'Newsreader',serif;font-weight:300;font-size:clamp(28px,3.6vw,42px);line-height:1.1;margin:0 0 30px;color:#fff;">Loved by the families<br>who live with our work.</h2>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div data-reveal data-delay="80" style="background:rgba(247,240,230,0.06);border:1px solid rgba(247,240,230,0.12);border-radius:14px;padding:22px;">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;"><span style="display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:#D9824A;color:#fff;font-weight:700;font-size:15px;">S</span><div><div style="font-weight:600;font-size:14.5px;color:#fff;">Sofia Almeida</div><div style="font-size:12px;color:#9DB0B8;">2 weeks ago</div></div><span style="margin-left:auto;color:#F4B23E;font-size:13px;">★★★★★</span></div>
+              <p style="font-size:14px;line-height:1.6;color:#D9CFC0;margin:0;">"Delivered exactly on the day promised. The finish quality is genuinely better than the big-name brands we got quotes from — and the price was fairer."</p>
+            </div>
+            <div data-reveal data-delay="160" style="background:rgba(247,240,230,0.06);border:1px solid rgba(247,240,230,0.12);border-radius:14px;padding:22px;">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;"><span style="display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:#5E8B7E;color:#fff;font-weight:700;font-size:15px;">D</span><div><div style="font-weight:600;font-size:14.5px;color:#fff;">Daniel Hughes</div><div style="font-size:12px;color:#9DB0B8;">1 month ago</div></div><span style="margin-left:auto;color:#F4B23E;font-size:13px;">★★★★★</span></div>
+              <p style="font-size:14px;line-height:1.6;color:#D9CFC0;margin:0;">"They handled our entire home. One point of contact, clear pricing, no last-minute add-ons. The wardrobes are stunning."</p>
+            </div>
+          </div>
+          <a href="Yeshwa-Contact.dc.html" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:#E5915A;font-size:14.5px;font-weight:600;margin-top:24px;" style-hover="color:#fff;">Read all reviews on Google →</a>
+        </div>
+        <div data-reveal data-delay="120" style="display:flex;flex-direction:column;gap:20px;">
+          <div style="border-radius:16px;overflow:hidden;border:1px solid rgba(247,240,230,0.14);height:440px;background:#1c2c34;">
+            <iframe title="Yeshwa Modular Furniture location" src="https://www.google.com/maps?q=design+studio&output=embed" style="width:100%;height:100%;border:0;filter:grayscale(0.25);" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px;background:rgba(247,240,230,0.06);border:1px solid rgba(247,240,230,0.12);border-radius:14px;padding:18px 22px;">
+            <span style="flex:none;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:11px;background:#D9824A;color:#fff;font-size:20px;">⌖</span>
+            <div><div style="font-weight:700;font-size:15px;color:#fff;">Yeshwa Experience Studio</div><div style="font-size:13.5px;color:#9DB0B8;">Visit by appointment · Open 7 days · 10am–8pm</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="max-width:1340px;margin:96px auto;padding:0 48px;">
+    <div data-reveal style="position:relative;overflow:hidden;border-radius:22px;background:#D9824A;padding:84px 60px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;">
+      <div style="position:absolute;right:-70px;top:-70px;width:320px;height:320px;border-radius:50%;background:rgba(247,240,230,0.12);"></div>
+      <div style="position:relative;">
+        <h2 style="font-family:'Newsreader',serif;font-weight:300;font-size:clamp(32px,4vw,50px);line-height:1.05;margin:0 0 16px;color:#FFF7EE;">Ready to reimagine<br>your space?</h2>
+        <p style="font-size:17px;line-height:1.6;color:#FFE9D6;margin:0;max-width:480px;">Book a free consultation. We'll measure, design in 3D and send an itemised quote — no obligation.</p>
+      </div>
+      <a href="Yeshwa-Contact.dc.html" data-magnetic style="position:relative;flex:none;display:inline-flex;align-items:center;gap:9px;text-decoration:none;background:#16242B;color:#F7F0E6;font-size:16px;font-weight:600;padding:18px 36px;border-radius:999px;transition:transform .25s ease;">Book my consultation →</a>
+    </div>
+  </section>
+
+  <dc-import name="YeshwaFooter" hint-size="100%,460px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    if (window.__yeshwaHomeFx) return; // bind global, delegation-based handlers once
+    window.__yeshwaHomeFx = true;
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const canHover = matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+    // Counters — persistent scroll handler queries fresh nodes (re-render proof)
+    const animateCount = (el) => {
+      if (el.dataset.counted) return;
+      el.dataset.counted = '1';
+      const target = parseFloat(el.getAttribute('data-count'));
+      const dec = el.getAttribute('data-dec') === '1';
+      const suffix = el.getAttribute('data-suffix') || '';
+      const dur = 1500, start = performance.now();
+      const step = (now) => {
+        let p = Math.min(1, (now - start) / dur);
+        p = 1 - Math.pow(1 - p, 3);
+        const val = target * p;
+        el.textContent = (dec ? val.toFixed(1) : Math.round(val).toLocaleString()) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    const checkCounters = () => {
+      document.querySelectorAll('[data-count]').forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.top < innerHeight * 0.88 && r.bottom > 0) animateCount(el);
+      });
+    };
+    addEventListener('scroll', checkCounters, { passive: true });
+    addEventListener('resize', checkCounters, { passive: true });
+    checkCounters();
+    [300, 900, 1600].forEach((t) => setTimeout(checkCounters, t));
+
+    if (canHover && !reduce) {
+      // Custom cursor follower (delegation for hover state)
+      let dot = document.getElementById('yx-cursor');
+      if (!dot) {
+        dot = document.createElement('div');
+        dot.id = 'yx-cursor';
+        dot.style.cssText = 'position:fixed;left:-100px;top:-100px;width:30px;height:30px;border:1.5px solid rgba(217,130,74,0.85);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .25s,height .25s,background .25s;';
+        document.body.appendChild(dot);
+        let x = innerWidth / 2, y = innerHeight / 2, cx = x, cy = y;
+        addEventListener('mousemove', (e) => { x = e.clientX; y = e.clientY; });
+        const loop = () => { cx += (x - cx) * 0.2; cy += (y - cy) * 0.2; dot.style.left = cx + 'px'; dot.style.top = cy + 'px'; requestAnimationFrame(loop); };
+        loop();
+      }
+      document.addEventListener('mouseover', (e) => {
+        if (e.target.closest && e.target.closest('a,button,[data-cursor]')) {
+          dot.style.width = '50px'; dot.style.height = '50px'; dot.style.background = 'rgba(217,130,74,0.12)';
+        }
+      });
+      document.addEventListener('mouseout', (e) => {
+        if (e.target.closest && e.target.closest('a,button,[data-cursor]')) {
+          dot.style.width = '30px'; dot.style.height = '30px'; dot.style.background = 'transparent';
+        }
+      });
+
+      // Magnetic buttons (delegation, re-render proof)
+      document.addEventListener('mousemove', (e) => {
+        document.querySelectorAll('[data-magnetic]').forEach((btn) => {
+          const r = btn.getBoundingClientRect();
+          const pad = 60;
+          const inside = e.clientX >= r.left - pad && e.clientX <= r.right + pad && e.clientY >= r.top - pad && e.clientY <= r.bottom + pad;
+          if (inside) {
+            const mx = e.clientX - r.left - r.width / 2;
+            const my = e.clientY - r.top - r.height / 2;
+            btn.style.transform = 'translate(' + (mx * 0.2) + 'px,' + (my * 0.3) + 'px)';
+          } else if (btn.style.transform && btn.style.transform !== 'translate(0px, 0px)') {
+            btn.style.transform = 'translate(0px, 0px)';
+          }
+        });
+      });
+    }
+  }
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

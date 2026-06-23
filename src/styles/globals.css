@@ -1,0 +1,111 @@
+@import './tokens.css';
+@import './animations.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base reset — mirrors the original export. */
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--y-cream);
+  font-family: var(--y-sans);
+  color: var(--y-slate);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+::selection {
+  background: var(--y-accent);
+  color: var(--y-cream);
+}
+
+/* Form controls inherit the brand sans. */
+input,
+select,
+textarea,
+button {
+  font-family: var(--y-sans);
+}
+input::placeholder,
+textarea::placeholder {
+  color: #9aa6ac;
+}
+
+/* Shared admin field style (from Yeshwa-Admin.dc.html). */
+.ya-field {
+  width: 100%;
+  font-size: 14.5px;
+  padding: 11px 13px;
+  border-radius: 9px;
+  border: 1px solid #d8cdb6;
+  background: #fff;
+  color: #22353f;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.ya-field:focus {
+  border-color: var(--y-accent);
+  box-shadow: 0 0 0 3px rgba(217, 130, 74, 0.15);
+}
+
+/* TipTap editor content (blog). */
+.tiptap {
+  outline: none;
+  min-height: 320px;
+}
+.tiptap p {
+  margin: 0 0 14px;
+  line-height: 1.7;
+}
+.tiptap h2 {
+  font-family: var(--y-serif);
+  font-weight: 400;
+  font-size: 28px;
+  margin: 28px 0 12px;
+  color: var(--y-ink);
+}
+.tiptap h3 {
+  font-family: var(--y-serif);
+  font-weight: 400;
+  font-size: 22px;
+  margin: 22px 0 10px;
+  color: var(--y-ink);
+}
+.tiptap ul,
+.tiptap ol {
+  padding-left: 22px;
+  margin: 0 0 14px;
+}
+.tiptap blockquote {
+  border-left: 3px solid var(--y-accent);
+  padding-left: 16px;
+  margin: 0 0 16px;
+  color: var(--y-muted);
+  font-style: italic;
+}
+.tiptap a {
+  color: var(--y-accent);
+  text-decoration: underline;
+}
+.tiptap img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin: 12px 0;
+}
+.tiptap p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #9aa6ac;
+  pointer-events: none;
+  height: 0;
+}
