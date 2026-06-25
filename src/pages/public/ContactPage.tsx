@@ -71,7 +71,7 @@ function InfiniteGallery() {
     velocity.set(targetVelocity);
   }, [targetVelocity, velocity]);
 
-  useAnimationFrame((t, delta) => {
+  useAnimationFrame((_, delta) => {
     if (!containerRef.current) return;
     
     // Safety check for maximum delta to prevent large jumps if tab is inactive
