@@ -19,16 +19,58 @@ export function Footer() {
       <div style={{ maxWidth: 1240, margin: '0 auto' }}>
         <div className="y-foot-grid" style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr 1fr 1.4fr', gap: 48, paddingBottom: 56, borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
-              <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: 10, background: COLORS.accent, color: COLORS.navy, fontFamily: FONTS.serif, fontWeight: 500, fontSize: 27, lineHeight: 1, paddingBottom: 3 }}>
-                Y
-              </span>
-              <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
-                <span style={{ fontSize: 20, fontWeight: 700, letterSpacing: '0.16em', color: COLORS.cream }}>YESHWA</span>
-                <span style={{ fontSize: 8.5, fontWeight: 600, letterSpacing: '0.34em', color: '#9c8c76', marginTop: 4 }}>MODULAR FURNITURE</span>
-              </span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 2 }}>
+              <Link
+                  to="/"
+                  aria-label="Yeshwa Modular Furniture home"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 8,
+                    textDecoration: 'none',
+                    marginBottom: 20,
+                  }}
+                >
+                  <img
+                    src="/uploads/primary-logo.png"
+                    alt="Yeshwa Modular Furniture"
+                    style={{
+                      width: 48,
+                      height: 48,
+                      objectFit: 'contain',
+                      display: 'block',
+                      flex: 'none',
+                    }}
+                  />
+
+                  <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
+                    <span
+                      style={{
+                        fontSize: 28,
+                        fontWeight: 600,
+                        letterSpacing: '0.18em',
+                        color: COLORS.cream,
+                        marginTop: 8,
+                      }}
+                    >
+                      YESHWA
+                    </span>
+
+                    <span
+                      style={{
+                        fontSize: 13.5,
+                        fontWeight: 700,
+                        // letterSpacing: '0.34em',
+                        color: COLORS.accentLight,
+                        marginTop: 10,
+                      }}
+                    >
+                      MODULAR FURNITURE
+                    </span>
+                  </span>
+                </Link>
             </div>
-            <p style={{ fontFamily: FONTS.serif, fontSize: 24, lineHeight: 1.3, color: COLORS.cream, margin: '0 0 20px', maxWidth: 300 }}>
+            <p style={{ fontFamily: FONTS.serif, fontSize: 24, lineHeight: 1.3, color: COLORS.cream, margin: '0 0 10px', maxWidth: 300 }}>
               <span style={{ color: COLORS.accentLight, fontStyle: 'italic' }}>Yes</span> to better living.
             </p>
             <p style={{ fontSize: 14.5, lineHeight: 1.7, color: '#A99C8B', margin: 0, maxWidth: 320 }}>
@@ -60,7 +102,7 @@ export function Footer() {
             <span style={{ display: 'block', color: '#A99C8B', fontSize: 13.5 }}>Visits by appointment</span>
             <div style={{ display: 'flex', gap: 10, marginTop: 22 }}>
               {[
-                { label: 'in', href: settings.social.linkedin },
+                // { label: 'in', href: settings.social.linkedin },
                 { label: 'ig', href: settings.social.instagram },
                 { label: 'fb', href: settings.social.facebook },
               ].map((s) => (
@@ -80,7 +122,20 @@ export function Footer() {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16, paddingTop: 28 }}>
           <p style={{ fontSize: 13, color: '#7E7264', margin: 0 }}>© 2026 Yeshwa Modular Furniture. All rights reserved.</p>
           <p style={{ fontSize: 13, color: '#7E7264', margin: 0 }}>
-            Designed &amp; built by <span style={{ color: COLORS.accentLight, fontWeight: 600 }}>KalyTrex</span> ·{' '}
+            Designed &amp; built by{' '}
+            <a
+              href="https://kalytrex.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                color: COLORS.accentLight,
+                fontWeight: 600,
+                textDecoration: 'none',
+                borderBottom: `1px solid ${COLORS.accentLight}`,
+              }}
+            >
+              KalyTrex
+            </a> ·{' '}
             <Link to="/admin" style={{ color: '#7E7264', textDecoration: 'none', borderBottom: '1px solid rgba(126,114,100,0.5)' }}>Admin</Link>
           </p>
         </div>

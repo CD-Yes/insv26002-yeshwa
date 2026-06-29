@@ -49,7 +49,7 @@ export interface SiteSettings {
   googleMapsEmbedUrl: string;
   googleReviewsUrl: string;
   social: {
-    linkedin: string;
+    // linkedin: string;
     instagram: string;
     facebook: string;
   };
@@ -61,13 +61,13 @@ export const SITE_DEFAULTS: SiteSettings = {
   phone: '+1 000 000 0000',
   phoneRaw: '+10000000000',
   whatsapp: import.meta.env.VITE_WHATSAPP_NUMBER ?? '10000000000',
-  studios: ['London', 'Dubai', 'Singapore', 'Mumbai', 'New York', 'Sydney'],
+  studios: ['Erode', 'Coimbatore'],
   address: 'Yeshwa Experience Studio · Visit by appointment',
   hours: 'Open 7 days · 10am–8pm',
   googleMapsEmbedUrl: 'https://www.google.com/maps?q=design+studio&output=embed',
   googleReviewsUrl: 'https://www.google.com/maps?q=design+studio',
   social: {
-    linkedin: '#',
+    // linkedin: '#',
     instagram: '#',
     facebook: '#',
   },

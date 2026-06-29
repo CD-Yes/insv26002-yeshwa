@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { ADMIN_NAV } from '@/data/navigation';
 import { COLORS, FONTS } from '@/data/siteConfig';
 import { useAuth } from '@/app/providers/AuthProvider';
@@ -32,12 +32,72 @@ export function AdminSidebar({ newEnquiries = 0 }: AdminSidebarProps) {
       }}
     >
       <div style={{ padding: '24px 22px 22px', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 11 }}>
-          <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 36, height: 36, borderRadius: 9, background: COLORS.accent, color: COLORS.ink, fontFamily: FONTS.serif, fontWeight: 500, fontSize: 24, lineHeight: 1, paddingBottom: 3 }}>Y</span>
-          <div style={{ lineHeight: 1.1 }}>
-            <div style={{ fontSize: 15, fontWeight: 700, letterSpacing: '0.14em', color: COLORS.cream }}>YESHWA</div>
-            <div style={{ fontSize: 9, fontWeight: 600, letterSpacing: '0.16em', color: '#7E8C93', marginTop: 2 }}>CONTENT STUDIO</div>
-          </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <Link
+            to="/admin"
+            aria-label="Yeshwa Content Studio"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 12,
+              textDecoration: 'none',
+              minWidth: 0,
+            }}
+          >
+            <span
+              style={{
+                width: 40,
+                height: 40,
+                borderRadius: 1,
+                // background: 'rgba(217,130,74,0.12)',
+                // border: '1px solid rgba(217,130,74,0.22)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flex: 'none',
+                overflow: 'hidden',
+              }}
+            >
+              <img
+                src="/uploads/primary-logo.png"
+                alt="Yeshwa"
+                style={{
+                  width: 32,
+                  height: 32,
+                  objectFit: 'contain',
+                  display: 'block',
+                }}
+              />
+            </span>
+
+            <div style={{ lineHeight: 1.1, minWidth: 0 }}>
+              <div
+                style={{
+                  fontSize: 18,
+                  fontWeight: 600,
+                  letterSpacing: '0.16em',
+                  color: COLORS.cream,
+                  marginTop: 4,
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                YESHWA
+              </div>
+
+              <div
+                style={{
+                  fontSize: 10.5,
+                  fontWeight: 700,
+                  // letterSpacing: '0.18em',
+                  color: COLORS.accentLight,
+                  marginTop: 5,
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                CONTENT STUDIO
+              </div>
+            </div>
+          </Link>
         </div>
       </div>
 
