@@ -5,17 +5,21 @@ import { useAuth } from '@/app/providers/AuthProvider';
 
 interface AdminSidebarProps {
   newEnquiries?: number;
+  /** Off-canvas drawer state (mobile only — ignored on desktop). */
+  mobileOpen?: boolean;
+  /** Called when the drawer should close (nav click, logo, view-site). */
+  onClose?: () => void;
 }
 
 /** Admin sidebar — ported from YeshwaAdminSidebar.dc.html, wired to real routes. */
-export function AdminSidebar({ newEnquiries = 0 }: AdminSidebarProps) {
+export function AdminSidebar({ newEnquiries = 0, mobileOpen = false, onClose }: AdminSidebarProps) {
   const { profile, signOut } = useAuth();
   const navigate = useNavigate();
   const groups: Array<'Website' | 'Insights' | 'Settings'> = ['Website', 'Insights', 'Settings'];
 
   return (
     <aside
-      className="y-admin-sidebar"
+      className={`y-admin-sidebar ${mobileOpen ? 'is-open' : ''}`}
       style={{
         position: 'fixed',
         left: 0,
@@ -36,6 +40,7 @@ export function AdminSidebar({ newEnquiries = 0 }: AdminSidebarProps) {
           <Link
             to="/admin"
             aria-label="Yeshwa Content Studio"
+            onClick={onClose}
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -110,6 +115,7 @@ export function AdminSidebar({ newEnquiries = 0 }: AdminSidebarProps) {
                 key={item.key}
                 to={item.to}
                 end={item.to === '/admin'}
+                onClick={onClose}
                 style={({ isActive }) => ({
                   display: 'flex',
                   alignItems: 'center',
@@ -137,7 +143,7 @@ export function AdminSidebar({ newEnquiries = 0 }: AdminSidebarProps) {
       </nav>
 
       <div style={{ padding: 14, borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-        <a href="/" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: 11, borderRadius: 10, textDecoration: 'none', fontSize: 14, fontWeight: 600, color: COLORS.ink, background: COLORS.accentLight, marginBottom: 12 }}>↗ View live site</a>
+        <a href="/" onClick={onClose} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: 11, borderRadius: 10, textDecoration: 'none', fontSize: 14, fontWeight: 600, color: COLORS.ink, background: COLORS.accentLight, marginBottom: 12 }}>↗ View live site</a>
         <div style={{ display: 'flex', alignItems: 'center', gap: 11, padding: '4px 4px 2px' }}>
           <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 34, height: 34, borderRadius: '50%', background: COLORS.slate, color: COLORS.cream, fontSize: 13, fontWeight: 700 }}>
             {(profile?.full_name || profile?.email || 'A').slice(0, 2).toUpperCase()}

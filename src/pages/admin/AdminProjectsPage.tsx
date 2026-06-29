@@ -3,6 +3,7 @@ import { COLORS, FONTS } from '@/data/siteConfig';
 import { useSeo } from '@/lib/seo';
 import { supabase } from '@/lib/supabaseClient';
 import { AdminTopbar } from '@/components/admin/AdminTopbar';
+import { AdminButton } from '@/components/admin/AdminButton';
 import { MediaUploader } from '@/components/admin/MediaUploader';
 import { PageStatusToggle } from '@/components/admin/PageStatusToggle';
 import { LoadingState } from '@/components/common/LoadingState';
@@ -59,7 +60,7 @@ export function AdminProjectsPage() {
 
   return (
     <div>
-      <AdminTopbar eyebrow="Website" title="Projects" actions={<button onClick={() => setEditing({ ...emptyDraft })} style={primaryBtn}>+ New project</button>} />
+      <AdminTopbar title="Projects" actions={<AdminButton onClick={() => setEditing({ ...emptyDraft })} icon="＋" label="New project" />} />
       <div style={{ padding: '30px 32px' }}>
         {loading ? (
           <LoadingState minHeight={200} />

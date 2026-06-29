@@ -54,7 +54,7 @@ export function AdminGalleryPage() {
 
   return (
     <div>
-      <AdminTopbar eyebrow="Website" title="Gallery" />
+      <AdminTopbar title="Gallery" />
       <div style={{ padding: '30px 32px' }}>
         {/* Add new */}
         <div style={{ background: '#fff', border: '1px solid rgba(45,70,84,0.1)', borderRadius: 16, padding: 24, marginBottom: 26 }}>

@@ -24,6 +24,63 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
+
+/* ---------------------------------------------------------------------------
+ * Responsive safety net — stop accidental horizontal overflow without breaking
+ * position:sticky. `clip` (unlike `hidden`) does not create a scroll container,
+ * so the sticky navbar/admin topbar keep working. Applied to body/#root only
+ * (never html — that would clip vertical page scroll).
+ * ------------------------------------------------------------------------- */
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+/* Media + form controls never exceed their container. */
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+button,
+input,
+textarea,
+select {
+  max-width: 100%;
+}
+
+/* Flex/grid children must be allowed to shrink to enable text truncation. */
+.y-card,
+.y-panel,
+.y-section,
+.y-admin-table-wrap {
+  min-width: 0;
+}
+
+/* Admin action buttons: hover lift; collapse to icon-only on small screens. */
+.y-admin-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px -10px rgba(22, 36, 43, 0.45);
+}
+.y-admin-btn:active {
+  transform: translateY(0);
+}
+@media (max-width: 600px) {
+  .y-btn-label {
+    display: none;
+  }
+  .y-admin-btn {
+    padding: 10px 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .y-admin-btn:hover {
+    transform: none;
+  }
+}
 ::selection {
   background: var(--y-accent);
   color: var(--y-cream);

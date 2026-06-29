@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { COLORS, FONTS } from '@/data/siteConfig';
 import { useAuth } from '@/app/providers/AuthProvider';
 import { isSupabaseConfigured } from '@/lib/supabaseClient';
@@ -12,9 +12,9 @@ export function AdminLoginPage() {
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
-  // Already signed in as staff — go to dashboard.
+  // Already signed in as staff — redirect declaratively (no setState-in-render).
   if (session && isAdmin) {
-    navigate('/admin', { replace: true });
+    return <Navigate to="/admin" replace />;
   }
 
   async function handleSubmit(e: React.FormEvent) {

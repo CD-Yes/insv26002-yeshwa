@@ -4,6 +4,7 @@ import { COLORS, FONTS } from '@/data/siteConfig';
 import { useSeo } from '@/lib/seo';
 import { supabase } from '@/lib/supabaseClient';
 import { AdminTopbar } from '@/components/admin/AdminTopbar';
+import { AdminButton } from '@/components/admin/AdminButton';
 import { RichTextEditor } from '@/components/admin/RichTextEditor';
 import { MediaUploader } from '@/components/admin/MediaUploader';
 import { LoadingState } from '@/components/common/LoadingState';
@@ -101,8 +102,8 @@ export function AdminBlogEditorPage() {
         actions={
           <>
             <span style={{ fontSize: 13, fontWeight: 600, color: form.status === 'published' ? '#2C8A53' : COLORS.warm }}>{form.status === 'published' ? 'Published' : 'Draft'}</span>
-            <button onClick={() => persist('draft')} disabled={saving} style={ghost}>Save draft</button>
-            <button onClick={() => persist('published')} disabled={saving} style={primary}>{form.status === 'published' ? 'Update' : 'Publish'}</button>
+            <AdminButton variant="ghost" onClick={() => persist('draft')} disabled={saving} icon="✎" label="Save draft" />
+            <AdminButton onClick={() => persist('published')} disabled={saving} icon="↗" label={form.status === 'published' ? 'Update' : 'Publish'} />
           </>
         }
       />
@@ -170,5 +171,3 @@ function Card({ title, children }: { title: string; children: React.ReactNode })
   );
 }
 
-const primary: React.CSSProperties = { cursor: 'pointer', border: 'none', background: COLORS.accent, color: '#fff', fontSize: 14, fontWeight: 600, padding: '11px 20px', borderRadius: 999 };
-const ghost: React.CSSProperties = { cursor: 'pointer', border: '1px solid #D8CDB6', background: '#fff', color: COLORS.ink, fontSize: 14, fontWeight: 600, padding: '11px 18px', borderRadius: 999 };

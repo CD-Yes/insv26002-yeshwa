@@ -3,6 +3,7 @@ import { COLORS } from '@/data/siteConfig';
 import { useSeo } from '@/lib/seo';
 import { supabase } from '@/lib/supabaseClient';
 import { AdminTopbar } from '@/components/admin/AdminTopbar';
+import { AdminButtonLink } from '@/components/admin/AdminButton';
 import { AdminTable, type Column } from '@/components/admin/AdminTable';
 import { StatusBadge } from '@/components/common/StatusBadge';
 import { useAdminTable } from '@/hooks/useAdminTable';
@@ -47,7 +48,7 @@ export function AdminBlogsPage() {
 
   return (
     <div>
-      <AdminTopbar eyebrow="Website" title="Blog" actions={<Link to="/admin/blogs/new" style={{ textDecoration: 'none', background: COLORS.accent, color: '#fff', fontSize: 14, fontWeight: 600, padding: '11px 18px', borderRadius: 999 }}>+ New post</Link>} />
+      <AdminTopbar title="Blog" actions={<AdminButtonLink to="/admin/blogs/new" icon="✎" label="New post" />} />
       <div style={{ padding: '30px 32px' }}>
         <AdminTable columns={columns} rows={rows} rowKey={(r) => r.id} loading={loading} emptyTitle="No posts yet" emptyDescription="Create your first article." />
         {!loading && rows.length === 0 && <div style={{ marginTop: 16 }}><Link to="/admin/blogs/new" style={{ color: COLORS.accent, fontWeight: 600 }}>+ Write your first post</Link></div>}
