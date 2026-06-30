@@ -1,29 +1,13 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, useAnimationFrame, useSpring, useMotionValue } from 'framer-motion';
-import { COLORS, REQUIREMENT_TYPES, BUDGET_RANGES } from '@/data/siteConfig';
+import { REQUIREMENT_TYPES, BUDGET_RANGES } from '@/data/siteConfig';
 import { useSeo } from '@/lib/seo';
 import { useSiteSettings } from '@/hooks/useSiteSettings';
 import { GoogleMapEmbed } from '@/components/public/GoogleMapEmbed';
 import { submitEnquiry } from '@/lib/enquiry';
 
-const FIELD: React.CSSProperties = {
-  width: '100%',
-  fontSize: 14,
-  padding: '12px 16px',
-  borderRadius: 8,
-  border: '1px solid rgba(45,70,84,0.12)',
-  background: '#FBF7EF',
-  color: COLORS.slate,
-  outline: 'none',
-};
-
-const LABEL: React.CSSProperties = { 
-  display: 'block', 
-  fontSize: 12, 
-  fontWeight: 600, 
-  color: COLORS.slate, 
-  marginBottom: 6 
-};
+const fieldClasses = "w-full text-[14px] px-4 py-3 rounded-lg border border-slate/20 bg-cream text-slate outline-none focus:border-accent/50 transition-colors";
+const labelClasses = "block text-[12px] font-semibold text-slate mb-1.5";
 
 const galleryItems = [
   'kitchen - london',
@@ -41,7 +25,7 @@ const PlaceholderCard = ({ title }: { title: string }) => {
     >
       {/* Striped background */}
       <div 
-        className="absolute inset-0 bg-[#EFEBE4]"
+        className="absolute inset-0 bg-cream-panel"
         style={{
           backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,0.035) 10px, rgba(0,0,0,0.035) 12px)'
         }}
@@ -148,7 +132,7 @@ export function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF6F0] pt-[40px] pb-24">
+    <div className="min-h-screen bg-cream pt-[40px] pb-24">
       <section className="max-w-[1400px] mx-auto px-6 lg:px-12">
         
         {/* 3 Column Grid */}
@@ -159,24 +143,24 @@ export function ContactPage() {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="bg-white border border-[#2D4654]/10 rounded-3xl p-8 lg:p-10 shadow-[0_24px_60px_-30px_rgba(34,53,63,0.15)] order-2 lg:order-1"
+            className="bg-white border border-slate/10 rounded-3xl p-8 lg:p-10 shadow-[0_24px_60px_-30px_rgba(34,53,63,0.15)] order-2 lg:order-1"
           >
             {submitted ? (
               <div className="flex flex-col items-center justify-center text-center py-12 min-h-[500px]">
-                <span className="flex items-center justify-center w-16 h-16 rounded-full bg-[#FBF7EF] text-[#D35A38] text-3xl font-serif mb-6">✓</span>
-                <h2 className="font-serif text-[28px] text-[#22353F] mb-3">Thank you — we've got it.</h2>
-                <p className="text-[#64748B] leading-relaxed max-w-[280px]">
+                <span className="flex items-center justify-center w-16 h-16 rounded-full bg-cream text-accent text-3xl font-serif mb-6">✓</span>
+                <h2 className="font-serif text-[28px] text-navy mb-3">Thank you — we've got it.</h2>
+                <p className="text-muted leading-relaxed max-w-[280px]">
                   Our design team will reach out within one business day to schedule your free consultation.
                 </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit}>
                 <div className="mb-8">
-                  <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-[#D35A38] mb-2">Request</p>
-                  <h2 className="font-serif text-[34px] leading-[1.1] text-[#22353F]">Request your<br/>free quote</h2>
+                  <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-accent mb-2">Request</p>
+                  <h2 className="font-serif text-[34px] leading-[1.1] text-navy">Request your<br/>free quote</h2>
                 </div>
                 
-                <p className="text-[14px] leading-relaxed text-[#64748B] mb-8">
+                <p className="text-[14px] leading-relaxed text-muted mb-8">
                   Tell us about your project and our team will get back to you within one business day.
                 </p>
 
@@ -190,40 +174,40 @@ export function ContactPage() {
                   className="flex flex-col gap-5"
                 >
                   <motion.label variants={fadeUp} className="block">
-                    <span style={LABEL}>Full name</span>
-                    <input required type="text" placeholder="Your name" value={form.name} onChange={set('name')} style={FIELD} />
+                    <span className={labelClasses}>Full name <span className="text-accent">*</span></span>
+                    <input required type="text" placeholder="Your name" value={form.name} onChange={set('name')} className={fieldClasses} />
                   </motion.label>
                   
                   <motion.label variants={fadeUp} className="block">
-                    <span style={LABEL}>Email</span>
-                    <input required type="email" placeholder="you@email.com" value={form.email} onChange={set('email')} style={FIELD} />
+                    <span className={labelClasses}>Email <span className="text-accent">*</span></span>
+                    <input required type="email" placeholder="you@email.com" value={form.email} onChange={set('email')} className={fieldClasses} />
                   </motion.label>
 
                   <motion.label variants={fadeUp} className="block">
-                    <span style={LABEL}>Phone</span>
-                    <input required type="tel" placeholder="Include country code" value={form.phone} onChange={set('phone')} style={FIELD} />
+                    <span className={labelClasses}>Phone <span className="text-accent">*</span></span>
+                    <input required type="tel" placeholder="Include country code" value={form.phone} onChange={set('phone')} className={fieldClasses} />
                   </motion.label>
 
                   <motion.label variants={fadeUp} className="block">
-                    <span style={LABEL}>Project type</span>
-                    <select value={form.requirement_type} onChange={set('requirement_type')} style={FIELD}>
+                    <span className={labelClasses}>Project type</span>
+                    <select value={form.requirement_type} onChange={set('requirement_type')} className={fieldClasses}>
                       {REQUIREMENT_TYPES.map((t) => <option key={t}>{t}</option>)}
                     </select>
                   </motion.label>
 
                   <motion.label variants={fadeUp} className="block">
-                    <span style={LABEL}>Approx. budget</span>
-                    <select value={form.budget_range} onChange={set('budget_range')} style={FIELD}>
+                    <span className={labelClasses}>Approx. budget</span>
+                    <select value={form.budget_range} onChange={set('budget_range')} className={fieldClasses}>
                       {BUDGET_RANGES.map((b) => <option key={b}>{b}</option>)}
                     </select>
                   </motion.label>
 
                   <motion.label variants={fadeUp} className="block mb-2">
-                    <span style={LABEL}>Tell us about your space</span>
-                    <textarea rows={3} placeholder="Apartment / house, city, what you're looking for…" value={form.message} onChange={set('message')} style={{ ...FIELD, resize: 'vertical' }} />
+                    <span className={labelClasses}>Tell us about your space</span>
+                    <textarea rows={3} placeholder="Apartment / house, city, what you're looking for…" value={form.message} onChange={set('message')} className={`${fieldClasses} resize-y`} />
                   </motion.label>
 
-                  {error && <p className="text-[#C0392B] text-sm mb-2">{error}</p>}
+                  {error && <p className="text-accent text-sm mb-2">{error}</p>}
 
                   <motion.button 
                     variants={fadeUp}
@@ -231,7 +215,7 @@ export function ContactPage() {
                     whileTap={{ scale: 0.98 }}
                     type="submit" 
                     disabled={submitting} 
-                    className="w-full border-none bg-[#D35A38] hover:bg-[#c25030] text-[#FBF7EF] text-[15px] font-semibold py-4 rounded-xl transition-colors disabled:opacity-80 disabled:cursor-wait mt-2 shadow-[0_4px_14px_0_rgba(211,90,56,0.39)]"
+                    className="w-full border-none bg-accent hover:bg-accent-hover text-cream text-[15px] font-semibold py-4 rounded-xl transition-colors disabled:opacity-80 disabled:cursor-wait mt-2 shadow-[0_4px_14px_0_rgba(217,130,74,0.39)]"
                   >
                     {submitting ? 'Sending…' : 'Send request'}
                   </motion.button>
@@ -258,11 +242,11 @@ export function ContactPage() {
             className="order-3 flex flex-col gap-10 lg:pt-8"
           >
             <div>
-              <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-[#D35A38] mb-4">Get in touch</p>
-              <h1 className="font-serif font-light text-[40px] leading-[1.05] tracking-[-0.01em] mb-6 text-[#22353F]">
+              <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-accent mb-4">Get in touch</p>
+              <h1 className="font-serif font-light text-[40px] leading-[1.05] tracking-[-0.01em] mb-6 text-navy">
                 Let's design your<br />space together.
               </h1>
-              <p className="text-[15px] leading-[1.6] text-[#64748B] mb-10 max-w-[320px]">
+              <p className="text-[15px] leading-[1.6] text-muted mb-10 max-w-[320px]">
                 Visit our studio or reach out to us. We're here to help bring your vision to life.
               </p>
 
@@ -272,26 +256,26 @@ export function ContactPage() {
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                   } 
                   label="Call us" 
-                  value={<a href={`tel:${settings.phoneRaw}`} className="no-underline text-[15px] font-semibold text-[#22353F] hover:text-[#D35A38] transition-colors">{settings.phone}</a>} 
+                  value={<a href={`tel:${settings.phoneRaw}`} className="no-underline text-[15px] font-semibold text-navy hover:text-accent transition-colors">{settings.phone}</a>} 
                 />
                 <ContactRow 
                   icon={
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                   } 
                   label="Email" 
-                  value={<a href={`mailto:${settings.email}`} className="no-underline text-[15px] font-semibold text-[#22353F] hover:text-[#D35A38] transition-colors">{settings.email}</a>} 
+                  value={<a href={`mailto:${settings.email}`} className="no-underline text-[15px] font-semibold text-navy hover:text-accent transition-colors">{settings.email}</a>} 
                 />
                 <ContactRow 
                   icon={
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                   } 
                   label="Studios" 
-                  value={<span className="text-[14px] font-semibold text-[#22353F] leading-[1.6]">{settings.studios.slice(0, 3).join(' · ')}<br />{settings.studios.slice(3).join(' · ')}</span>} 
+                  value={<span className="text-[14px] font-semibold text-navy leading-[1.6]">{settings.studios.slice(0, 3).join(' · ')}<br />{settings.studios.slice(3).join(' · ')}</span>} 
                 />
               </div>
             </div>
 
-            <div className="rounded-[20px] overflow-hidden shadow-sm border border-[#2D4654]/10 bg-white p-2" data-hide-cursor>
+            <div className="rounded-[20px] overflow-hidden shadow-sm border border-slate/10 bg-white p-2" data-hide-cursor>
               <div className="rounded-xl overflow-hidden">
                 <GoogleMapEmbed height={260} />
               </div>
@@ -308,11 +292,11 @@ export function ContactPage() {
 function ContactRow({ icon, label, value }: { icon: React.ReactNode; label: string; value: React.ReactNode }) {
   return (
     <div className="flex gap-4 items-start">
-      <span className="flex-none flex items-center justify-center w-12 h-12 rounded-[14px] bg-[#FDF0EB] text-[#D35A38]">
+      <span className="flex-none flex items-center justify-center w-12 h-12 rounded-[14px] bg-accent/10 text-accent">
         {icon}
       </span>
       <div className="pt-1">
-        <div className="text-[10px] font-bold tracking-[0.12em] uppercase text-[#A57A68] mb-1">{label}</div>
+        <div className="text-[10px] font-bold tracking-[0.12em] uppercase text-warm mb-1">{label}</div>
         {value}
       </div>
     </div>
