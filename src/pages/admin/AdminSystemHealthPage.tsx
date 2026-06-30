@@ -11,7 +11,7 @@ export function AdminSystemHealthPage() {
 
   return (
     <div>
-      <AdminTopbar eyebrow="Insights" title="System health" />
+      <AdminTopbar title="System health" />
       <div style={{ padding: '30px 32px', maxWidth: 760 }}>
         <div style={{ background: COLORS.ink, color: COLORS.cream, borderRadius: 16, padding: 24, marginBottom: 22, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
           <div>

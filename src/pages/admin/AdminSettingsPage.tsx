@@ -3,6 +3,7 @@ import { COLORS, FONTS } from '@/data/siteConfig';
 import { useSeo } from '@/lib/seo';
 import { supabase } from '@/lib/supabaseClient';
 import { AdminTopbar } from '@/components/admin/AdminTopbar';
+import { AdminButton } from '@/components/admin/AdminButton';
 import { LoadingState } from '@/components/common/LoadingState';
 import type { SiteSettingRow } from '@/lib/types';
 
@@ -61,7 +62,7 @@ export function AdminSettingsPage() {
 
   return (
     <div>
-      <AdminTopbar eyebrow="Settings" title="Site settings" actions={<button onClick={save} disabled={saving} style={{ cursor: 'pointer', border: 'none', background: COLORS.accent, color: '#fff', fontSize: 14, fontWeight: 600, padding: '11px 22px', borderRadius: 999 }}>{saving ? 'Saving…' : 'Save changes'}</button>} />
+      <AdminTopbar title="Site settings" actions={<AdminButton onClick={save} disabled={saving} icon="✓" label={saving ? 'Saving…' : 'Save changes'} alwaysLabel />} />
 
       <div style={{ padding: '30px 32px', maxWidth: 760, display: 'flex', flexDirection: 'column', gap: 22 }}>
         {!supabase && <p style={{ color: '#C26E38' }}>Supabase is not configured — settings cannot be saved.</p>}

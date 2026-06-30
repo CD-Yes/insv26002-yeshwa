@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { COLORS, FONTS } from '@/data/siteConfig';
 import { useAuth } from '@/app/providers/AuthProvider';
 import { isSupabaseConfigured } from '@/lib/supabaseClient';
@@ -12,9 +12,9 @@ export function AdminLoginPage() {
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
-  // Already signed in as staff — go to dashboard.
+  // Already signed in as staff — redirect declaratively (no setState-in-render).
   if (session && isAdmin) {
-    navigate('/admin', { replace: true });
+    return <Navigate to="/admin" replace />;
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -31,11 +31,71 @@ export function AdminLoginPage() {
     <div style={{ minHeight: '100vh', display: 'grid', placeItems: 'center', background: COLORS.creamAdmin, fontFamily: FONTS.sans, padding: 24 }}>
       <div style={{ width: '100%', maxWidth: 400, background: '#fff', border: '1px solid rgba(45,70,84,0.1)', borderRadius: 18, padding: 36, boxShadow: '0 30px 60px -34px rgba(22,36,43,0.4)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 11, marginBottom: 26 }}>
-          <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: 40, height: 40, borderRadius: 10, background: COLORS.accent, color: COLORS.ink, fontFamily: FONTS.serif, fontWeight: 500, fontSize: 26, lineHeight: 1, paddingBottom: 3 }}>Y</span>
-          <div>
-            <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: '0.14em', color: COLORS.ink }}>YESHWA</div>
-            <div style={{ fontSize: 9, fontWeight: 600, letterSpacing: '0.16em', color: COLORS.warm }}>CONTENT STUDIO</div>
-          </div>
+          <Link
+                      to="/admin"
+                      aria-label="Yeshwa Content Studio"
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 12,
+                        textDecoration: 'none',
+                        minWidth: 0,
+                      }}
+                    >
+                      <span
+                        style={{
+                          width: 40,
+                          height: 40,
+                          borderRadius: 1,
+                          // background: 'rgba(217,130,74,0.12)',
+                          // border: '1px solid rgba(217,130,74,0.22)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          flex: 'none',
+                          overflow: 'hidden',
+                        }}
+                      >
+                        <img
+                          src="/uploads/primary-logo.png"
+                          alt="Yeshwa"
+                          style={{
+                            width: 32,
+                            height: 32,
+                            objectFit: 'contain',
+                            display: 'block',
+                          }}
+                        />
+                      </span>
+          
+                      <div style={{ lineHeight: 1.1, minWidth: 0 }}>
+                        <div
+                          style={{
+                            fontSize: 18,
+                            fontWeight: 600,
+                            letterSpacing: '0.16em',
+                            color: COLORS.navy,
+                            marginTop: 4,
+                            whiteSpace: 'nowrap',
+                          }}
+                        >
+                          YESHWA
+                        </div>
+          
+                        <div
+                          style={{
+                            fontSize: 10.5,
+                            fontWeight: 700,
+                            // letterSpacing: '0.18em',
+                            color: COLORS.accent,
+                            marginTop: 5,
+                            whiteSpace: 'nowrap',
+                          }}
+                        >
+                          CONTENT STUDIO
+                        </div>
+                      </div>
+                    </Link>
         </div>
 
         <h1 style={{ fontFamily: FONTS.serif, fontWeight: 400, fontSize: 26, margin: '0 0 6px', color: COLORS.ink }}>Sign in</h1>

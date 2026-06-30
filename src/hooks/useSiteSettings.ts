@@ -49,7 +49,7 @@ function mergeSettings(base: SiteSettings, o: Record<string, string>): SiteSetti
     googleMapsEmbedUrl: o.google_maps_embed_url ?? base.googleMapsEmbedUrl,
     googleReviewsUrl: o.google_reviews_url ?? base.googleReviewsUrl,
     social: {
-      linkedin: o.social_linkedin ?? base.social.linkedin,
+      // linkedin: o.social_linkedin ?? base.social.linkedin,
       instagram: o.social_instagram ?? base.social.instagram,
       facebook: o.social_facebook ?? base.social.facebook,
     },

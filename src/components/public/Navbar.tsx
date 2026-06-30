@@ -31,35 +31,27 @@ export function Navbar() {
     >
       <Link
         to="/"
-        style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none', flex: 'none' }}
+        className="y-brand-link"
+        aria-label="Yeshwa Modular Furniture home"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          textDecoration: "none",
+          flex: "none",
+          minWidth: 0,
+        }}
       >
-        <span
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: 38,
-            height: 38,
-            borderRadius: 10,
-            background: COLORS.accent,
-            color: COLORS.cream,
-            fontFamily: FONTS.serif,
-            fontWeight: 500,
-            fontSize: 26,
-            lineHeight: 1,
-            paddingBottom: 3,
-          }}
-        >
-          Y
-        </span>
-        <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
-          <span style={{ fontSize: 19, fontWeight: 700, letterSpacing: '0.16em', color: COLORS.slate }}>
-            YESHWA
-          </span>
-          <span style={{ fontSize: 8.5, fontWeight: 600, letterSpacing: '0.34em', color: COLORS.warm, marginTop: 4 }}>
-            MODULAR FURNITURE
-          </span>
-        </span>
+        <img
+          className="y-logo y-logo-full"
+          src="/uploads/primary-logo-hz.png"
+          alt="Yeshwa Modular Furniture"
+        />
+
+        <img
+          className="y-logo y-logo-mark"
+          src="/uploads/primary-logo.png"
+          alt="Yeshwa"
+        />
       </Link>
 
       {/* Desktop nav */}
@@ -174,11 +166,83 @@ export function Navbar() {
       )}
 
       <style>{`
-        .y-nav-link:hover { color: ${COLORS.accent}; }
-        .y-cta:hover { background: ${COLORS.accent}; }
+        .y-brand-link {
+          max-width: min(42vw, 270px);
+        }
+
+        .y-logo {
+          display: block;
+          object-fit: contain;
+          user-select: none;
+          pointer-events: none;
+        }
+
+        .y-logo-full {
+          width: clamp(170px, 18vw, 255px);
+          height: auto;
+          max-height: 58px;
+        }
+
+        .y-logo-mark {
+          display: none;
+          width: 46px;
+          height: 46px;
+          object-fit: contain;
+        }
+
+        .y-nav-link:hover { 
+          color: ${COLORS.accent}; 
+        }
+
+        .y-cta:hover { 
+          background: ${COLORS.accent}; 
+        }
+
+        @media (max-width: 1024px) {
+          .y-logo-full {
+            width: clamp(150px, 24vw, 210px);
+            max-height: 52px;
+          }
+
+          .y-nav-desktop {
+            gap: 24px !important;
+          }
+        }
+
         @media (max-width: 860px) {
-          .y-nav-desktop { display: none !important; }
-          .y-nav-mobile-toggle { display: flex !important; }
+          .y-nav-desktop { 
+            display: none !important; 
+          }
+
+          .y-nav-mobile-toggle { 
+            display: flex !important; 
+          }
+
+          .y-brand-link {
+            max-width: 58px;
+          }
+
+          .y-logo-full {
+            display: none;
+          }
+
+          .y-logo-mark {
+            display: block;
+            width: 48px;
+            height: 48px;
+          }
+        }
+
+        @media (max-width: 420px) {
+          .y-logo-mark {
+            width: 42px;
+            height: 42px;
+          }
+
+          .y-nav-mobile-panel {
+            padding-left: 22px !important;
+            padding-right: 22px !important;
+          }
         }
       `}</style>
     </header>

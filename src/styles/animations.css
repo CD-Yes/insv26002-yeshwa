@@ -69,6 +69,50 @@
   animation: ymarquee 32s linear infinite;
 }
 
+/* ---------------------------------------------------------------------------
+ * Admin entrance + chart load animations (premium, subtle, transform/opacity).
+ * ------------------------------------------------------------------------- */
+@keyframes yadminrise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.y-admin-rise {
+  animation: yadminrise 0.55s cubic-bezier(0.22, 0.7, 0.2, 1) both;
+}
+
+@keyframes yfade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.y-fade-in {
+  animation: yfade 0.8s ease both;
+}
+
+/* SVG line "draw on" — relies on pathLength="1" on the path element. */
+@keyframes ydraw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.y-line-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: ydraw 1.05s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
 @media (prefers-reduced-motion: reduce) {
   [data-reveal],
   .hero-in,
@@ -83,5 +127,13 @@
   }
   .yzoom:hover > .yzoom-img {
     transform: none;
+  }
+  .y-admin-rise,
+  .y-fade-in,
+  .y-line-draw {
+    animation: none !important;
+  }
+  .y-line-draw {
+    stroke-dashoffset: 0 !important;
   }
 }

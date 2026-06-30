@@ -47,7 +47,7 @@ export function applySeo(input: SeoInput) {
 
   const description = input.description ?? '';
   const url = `${SITE_DEFAULTS.siteUrl}${input.canonicalPath ?? ''}`;
-  const image = input.image ?? `${SITE_DEFAULTS.siteUrl}/uploads/Yeshwa-logo.jpeg`;
+  const image = input.image ?? `${SITE_DEFAULTS.siteUrl}/uploads/primary-logo.png`;
 
   upsertMeta('name', 'description', description);
   upsertMeta('name', 'robots', input.noindex ? 'noindex,nofollow' : 'index,follow');
@@ -95,7 +95,7 @@ export function organizationJsonLd() {
     name: BRAND.fullName,
     url: SITE_DEFAULTS.siteUrl,
     email: SITE_DEFAULTS.email,
-    logo: `${SITE_DEFAULTS.siteUrl}/uploads/Yeshwa-logo.jpeg`,
+    logo: `${SITE_DEFAULTS.siteUrl}/uploads/primary-logo.png`,
     sameAs: Object.values(SITE_DEFAULTS.social).filter((s) => s && s !== '#'),
   };
 }

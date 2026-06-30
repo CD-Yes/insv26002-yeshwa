@@ -29,7 +29,7 @@ export function AdminMediaPage() {
 
   return (
     <div>
-      <AdminTopbar eyebrow="Website" title="Media library" />
+      <AdminTopbar title="Media library" />
       <div style={{ padding: '30px 32px' }}>
         <div style={{ maxWidth: 520, marginBottom: 26 }}>
           <MediaUploader purpose="media" onUploaded={() => refetch()} height={130} />

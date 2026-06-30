@@ -24,7 +24,7 @@ export function AdminPagesPage() {
 
   return (
     <div>
-      <AdminTopbar eyebrow="Website" title="Pages" />
+      <AdminTopbar title="Pages" />
       <div style={{ padding: '30px 32px', maxWidth: 760 }}>
         <p style={{ fontSize: 14.5, color: COLORS.muted, margin: '0 0 22px' }}>
           Toggle public pages live or off. When a page is off, visitors see a clean

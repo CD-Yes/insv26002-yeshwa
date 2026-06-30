@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { COLORS, FONTS } from '@/data/siteConfig';
 import { useSeo } from '@/lib/seo';
 import { AdminTopbar } from '@/components/admin/AdminTopbar';
+import { AdminButton } from '@/components/admin/AdminButton';
 import { AdminStatCard } from '@/components/admin/AdminStatCard';
 import { AdminTable, type Column } from '@/components/admin/AdminTable';
 import { StatusBadge } from '@/components/common/StatusBadge';
@@ -81,12 +82,11 @@ export function AdminEnquiriesPage() {
   return (
     <div>
       <AdminTopbar
-        eyebrow="Insights"
         title="Enquiries"
         actions={
           <>
-            <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search name, email or project…" style={{ fontSize: 14, padding: '10px 15px', borderRadius: 999, border: '1px solid #D8CDB6', background: '#fff', width: 240, outline: 'none' }} />
-            <button onClick={exportCsv} style={{ cursor: 'pointer', border: '1px solid #D8CDB6', background: '#fff', color: COLORS.ink, fontSize: 14, fontWeight: 600, padding: '10px 18px', borderRadius: 999 }}>Export CSV</button>
+            <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search name, email or project…" style={{ fontSize: 14, padding: '10px 15px', borderRadius: 999, border: '1px solid #D8CDB6', background: '#fff', width: 'min(240px, 52vw)', outline: 'none' }} />
+            <AdminButton variant="ghost" onClick={exportCsv} icon="⭳" label="Export CSV" />
           </>
         }
       />
