@@ -14,6 +14,7 @@ export function MotionEffects() {
     if (reduce || !canHover) return;
 
     const dot = document.createElement('div');
+    dot.className = 'hidden lg:block';
     dot.style.cssText =
       'position:fixed;left:-100px;top:-100px;width:30px;height:30px;border:1.5px solid rgba(217,130,74,0.85);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .25s,height .25s,background .25s,opacity .25s;';
     document.body.appendChild(dot);

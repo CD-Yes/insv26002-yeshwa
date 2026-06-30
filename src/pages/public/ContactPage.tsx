@@ -21,7 +21,7 @@ const PlaceholderCard = ({ title }: { title: string }) => {
   return (
     <motion.div 
       whileHover={{ scale: 1.02 }}
-      className="relative w-full h-[280px] rounded-[24px] overflow-hidden mb-6 shrink-0 shadow-sm"
+      className="relative w-[260px] lg:w-full h-[220px] lg:h-[280px] rounded-[24px] overflow-hidden mr-4 lg:mr-0 lg:mb-6 shrink-0 shadow-sm"
     >
       {/* Striped background */}
       <div 
@@ -43,6 +43,16 @@ const PlaceholderCard = ({ title }: { title: string }) => {
 function InfiniteGallery() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const x = useMotionValue(0);
   const y = useMotionValue(0);
   
   // We duplicate the items to create a seamless loop
@@ -61,31 +71,49 @@ function InfiniteGallery() {
     // Safety check for maximum delta to prevent large jumps if tab is inactive
     const safeDelta = Math.min(delta, 32); 
     const moveBy = velocity.get() * (safeDelta / 16);
-    let currentY = y.get() + moveBy;
+    
+    if (isMobile) {
+      let currentX = x.get() + moveBy;
+      const containerWidth = containerRef.current.scrollWidth;
+      const halfWidth = containerWidth / 2;
 
-    const containerHeight = containerRef.current.scrollHeight;
-    const halfHeight = containerHeight / 2;
+      if (currentX <= -halfWidth) {
+         currentX += halfWidth;
+      } else if (currentX > 0) {
+         currentX -= halfWidth;
+      }
+      x.set(currentX);
+      y.set(0);
+    } else {
+      let currentY = y.get() + moveBy;
+      const containerHeight = containerRef.current.scrollHeight;
+      const halfHeight = containerHeight / 2;
 
-    if (currentY <= -halfHeight) {
-       currentY += halfHeight;
-    } else if (currentY > 0) {
-       currentY -= halfHeight;
+      if (currentY <= -halfHeight) {
+         currentY += halfHeight;
+      } else if (currentY > 0) {
+         currentY -= halfHeight;
+      }
+      y.set(currentY);
+      x.set(0);
     }
-
-    y.set(currentY);
   });
 
   return (
     <div 
-       className="overflow-hidden h-[800px] relative w-full rounded-3xl"
-       style={{ WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 2%, black 98%, transparent)' }}
+       className="overflow-hidden h-[240px] lg:h-[800px] relative w-full rounded-3xl"
+       style={{ 
+         WebkitMaskImage: isMobile 
+           ? 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)'
+           : 'linear-gradient(to bottom, transparent, black 2%, black 98%, transparent)' 
+       }}
        onMouseEnter={() => setIsHovered(true)}
        onMouseLeave={() => setIsHovered(false)}
     >
       <motion.div 
          ref={containerRef}
-         style={{ y }}
-         className="flex flex-col w-full"
+         style={{ x, y }}
+         className="flex flex-row lg:flex-col w-max lg:w-full h-full"
       >
         {duplicatedItems.map((item, idx) => (
           <PlaceholderCard key={idx} title={item} />
