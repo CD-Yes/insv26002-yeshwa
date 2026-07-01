@@ -111,7 +111,7 @@ export function Navbar() {
           transition: 'background .2s',
         }}
       >
-        Get a quote →
+        Contact Us →
       </Link>
 
       {/* Mobile hamburger */}

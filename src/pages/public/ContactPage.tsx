@@ -19,19 +19,29 @@ const galleryItems = [
 
 const PlaceholderCard = ({ title }: { title: string }) => {
   return (
-    <motion.div 
+    <motion.div
       whileHover={{ scale: 1.02 }}
-      className="relative w-[260px] lg:w-full h-[220px] lg:h-[280px] rounded-[24px] overflow-hidden mr-4 lg:mr-0 lg:mb-6 shrink-0 shadow-sm"
+      style={{
+        // Keep the rounded corners while scaling (Chrome drops the overflow clip
+        // on a transformed, blended layer without a dedicated compositing layer).
+        willChange: 'transform',
+        isolation: 'isolate',
+        WebkitBackfaceVisibility: 'hidden',
+        backfaceVisibility: 'hidden',
+      }}
+      // Mobile: fixed card size with a horizontal gap. Desktop: fills the column
+      // width so the gallery is balanced with the form/info columns, taller card.
+      className="relative w-[300px] lg:w-full h-[220px] lg:h-[300px] rounded-[24px] overflow-hidden mr-5 lg:mr-0 mb-0 lg:mb-6 shrink-0 shadow-sm"
     >
       {/* Striped background */}
-      <div 
-        className="absolute inset-0 bg-cream-panel"
+      <div
+        className="absolute inset-0 rounded-[24px] bg-cream-panel"
         style={{
           backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,0.035) 10px, rgba(0,0,0,0.035) 12px)'
         }}
       />
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#706B62]/80 via-[#706B62]/20 to-transparent mix-blend-multiply" />
+      <div className="absolute inset-0 rounded-[24px] bg-gradient-to-t from-[#706B62]/80 via-[#706B62]/20 to-transparent mix-blend-multiply" />
       {/* Title */}
       <div className="absolute bottom-6 left-6 font-mono text-[13px] font-semibold text-white/95 tracking-wider">
         [ {title} ]
@@ -44,7 +54,7 @@ function InfiniteGallery() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  
+
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 1024);
     checkMobile();
@@ -100,20 +110,20 @@ function InfiniteGallery() {
   });
 
   return (
-    <div 
-       className="overflow-hidden h-[240px] lg:h-[800px] relative w-full rounded-3xl"
-       style={{ 
-         WebkitMaskImage: isMobile 
+    <div
+       className="overflow-hidden h-[240px] lg:h-full relative w-full rounded-3xl"
+       style={{
+         WebkitMaskImage: isMobile
            ? 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)'
-           : 'linear-gradient(to bottom, transparent, black 2%, black 98%, transparent)' 
+           : 'linear-gradient(to bottom, transparent, black 2%, black 98%, transparent)'
        }}
        onMouseEnter={() => setIsHovered(true)}
        onMouseLeave={() => setIsHovered(false)}
     >
-      <motion.div 
+      <motion.div
          ref={containerRef}
          style={{ x, y }}
-         className="flex flex-row lg:flex-col w-max lg:w-full h-full"
+         className="flex flex-row lg:flex-col items-center w-max lg:w-full h-full"
       >
         {duplicatedItems.map((item, idx) => (
           <PlaceholderCard key={idx} title={item} />
@@ -141,6 +151,27 @@ export function ContactPage() {
     message: '',
   });
 
+  // Equal-height 3-column layout: on desktop the gallery matches the form's
+  // height (which is the tallest column) instead of a hardcoded value.
+  const leftRef = useRef<HTMLDivElement>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [colHeight, setColHeight] = useState(600);
+
+  useEffect(() => {
+    const onResize = () => setIsDesktop(window.innerWidth >= 1024);
+    onResize();
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
+  useEffect(() => {
+    const el = leftRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver(() => setColHeight(el.offsetHeight));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [k]: e.target.value }));
 
@@ -161,17 +192,18 @@ export function ContactPage() {
 
   return (
     <div className="min-h-screen bg-cream pt-[40px] pb-24">
-      <section className="max-w-[1400px] mx-auto px-6 lg:px-12">
+      <section className="max-w-[1800px] mx-auto px-6 lg:px-12">
         
-        {/* 3 Column Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-[30fr_42fr_28fr] xl:grid-cols-[28fr_42fr_30fr] gap-10 xl:gap-14 items-start">
+        {/* 3 Column Grid — three equal, balanced columns */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 xl:gap-10 items-start">
           
           {/* LEFT: FORM */}
-          <motion.div 
+          <motion.div
+            ref={leftRef}
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="bg-white border border-slate/10 rounded-3xl p-8 lg:p-10 shadow-[0_24px_60px_-30px_rgba(34,53,63,0.15)] order-2 lg:order-1"
+            className="bg-white border border-slate/10 rounded-3xl p-8 lg:p-10 shadow-[0_24px_60px_-30px_rgba(34,53,63,0.15)] order-2 lg:order-1 w-full"
           >
             {submitted ? (
               <div className="flex flex-col items-center justify-center text-center py-12 min-h-[500px]">
@@ -183,7 +215,7 @@ export function ContactPage() {
               </div>
             ) : (
               <form onSubmit={handleSubmit}>
-                <div className="mb-8">
+                <div className="mb-4">
                   <p className="text-[11px] font-bold tracking-[0.15em] uppercase text-accent mb-2">Request</p>
                   <h2 className="font-serif text-[34px] leading-[1.1] text-navy">Request your<br/>free quote</h2>
                 </div>
@@ -199,7 +231,7 @@ export function ContactPage() {
                     hidden: { opacity: 0 },
                     show: { opacity: 1, transition: { staggerChildren: 0.08 } }
                   }}
-                  className="flex flex-col gap-5"
+                  className="flex flex-col gap-4"
                 >
                   <motion.label variants={fadeUp} className="block">
                     <span className={labelClasses}>Full name <span className="text-accent">*</span></span>
@@ -253,20 +285,22 @@ export function ContactPage() {
           </motion.div>
 
           {/* CENTER: GALLERY */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="order-1 lg:order-2 h-full flex items-start justify-center"
+            style={{ height: isDesktop ? colHeight : undefined }}
+            className="order-1 lg:order-2 w-full flex items-start justify-center"
           >
             <InfiniteGallery />
           </motion.div>
 
           {/* RIGHT: INFO + MAP */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
+            style={{ height: isDesktop ? colHeight : undefined }}
             className="order-3 flex flex-col gap-10 lg:pt-8"
           >
             <div>
@@ -303,9 +337,9 @@ export function ContactPage() {
               </div>
             </div>
 
-            <div className="rounded-[20px] overflow-hidden shadow-sm border border-slate/10 bg-white p-2" data-hide-cursor>
-              <div className="rounded-xl overflow-hidden">
-                <GoogleMapEmbed height={260} />
+            <div className="rounded-[20px] overflow-hidden shadow-sm border border-slate/10 bg-white p-2 lg:flex-1 lg:flex lg:flex-col lg:min-h-0" data-hide-cursor>
+              <div className="rounded-xl overflow-hidden lg:flex-1 lg:min-h-0">
+                <GoogleMapEmbed height={isDesktop ? '100%' : 260} />
               </div>
             </div>
             
