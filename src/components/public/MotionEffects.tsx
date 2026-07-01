@@ -14,8 +14,9 @@ export function MotionEffects() {
     if (reduce || !canHover) return;
 
     const dot = document.createElement('div');
+    dot.className = 'hidden lg:block';
     dot.style.cssText =
-      'position:fixed;left:-100px;top:-100px;width:30px;height:30px;border:1.5px solid rgba(217,130,74,0.85);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .25s,height .25s,background .25s;';
+      'position:fixed;left:-100px;top:-100px;width:30px;height:30px;border:1.5px solid rgba(217,130,74,0.85);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .25s,height .25s,background .25s,opacity .25s;';
     document.body.appendChild(dot);
 
     let x = innerWidth / 2,
@@ -52,10 +53,15 @@ export function MotionEffects() {
 
     const onOver = (e: MouseEvent) => {
       const t = e.target as HTMLElement;
-      if (t.closest?.('a,button,[data-cursor]')) {
-        dot.style.width = '50px';
-        dot.style.height = '50px';
-        dot.style.background = 'rgba(217,130,74,0.12)';
+      if (t.closest?.('[data-hide-cursor]')) {
+        dot.style.opacity = '0';
+      } else {
+        dot.style.opacity = '1';
+        if (t.closest?.('a,button,[data-cursor]')) {
+          dot.style.width = '50px';
+          dot.style.height = '50px';
+          dot.style.background = 'rgba(217,130,74,0.12)';
+        }
       }
     };
     const onOut = (e: MouseEvent) => {
